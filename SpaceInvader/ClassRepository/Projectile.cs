@@ -6,17 +6,24 @@ using System.Threading.Tasks;
 
 namespace ClassRepository
 {
-    class Projectile : GameItem
+    public class Projectile : GameItem
     {
-        public Projectile(int y, int x) : base(y, x)
+        public bool IsMovingUp { get; set; }
+        public Projectile(int y, int x, bool direction) : base(y, x)
         {
-            this.x = x;
-            this.y = y;
+            this.IsMovingUp = direction;
             this.r = 2;
         }
         public override void Move()
         {
-            throw new NotImplementedException();
+            if (this.IsMovingUp)
+            {
+                this.y++;
+            }
+            else
+            {
+                this.y--;
+            }
         }
     }
 }
