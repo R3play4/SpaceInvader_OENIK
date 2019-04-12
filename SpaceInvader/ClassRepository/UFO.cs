@@ -11,9 +11,10 @@ namespace ClassRepository
         public int Points { get; set; }
         public UFO(int x, int y, int points) : base(x,y)
         {
+            this.HitPoint = 1;
             this.Points = points;
         }
-        public override void Move()
+        public void Move()
         {
             for (int i = 0; i < 100; i++)
             {

@@ -19,8 +19,6 @@ namespace ClassRepository
             this.y = y;
             this.x = x;
         }
-
-        public abstract void Move();
         public void TakeDamage() => this.HitPoint--;
     }
 }

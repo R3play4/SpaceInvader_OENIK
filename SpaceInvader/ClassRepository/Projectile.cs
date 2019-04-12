@@ -16,7 +16,7 @@ namespace ClassRepository
             this.IsMovingUp = direction;
             this.r = 2;
         }
-        public override void Move()
+        public void Move()
         {
             if (this.IsMovingUp)
             {
