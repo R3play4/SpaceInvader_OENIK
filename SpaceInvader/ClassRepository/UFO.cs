@@ -34,7 +34,7 @@ namespace ClassRepository
 
         public Projectile Shoot()
         {
-            return new Projectile(this.y + this.r, this.x, false);
+            return new Projectile(this.y + this.r, this.x, false, this);
         }
     }
 }
