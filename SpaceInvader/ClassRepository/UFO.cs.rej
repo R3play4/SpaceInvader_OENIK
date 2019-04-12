@@ -1,0 +1,10 @@
+diff a/SpaceInvader/ClassRepository/UFO.cs b/SpaceInvader/ClassRepository/UFO.cs	(rejected hunks)
+@@ -34,7 +34,7 @@
+ 
+         public Projectile Shoot()
+         {
+-            return new Projectile(this.y + this.r, this.x, false);
++            return new Projectile(this.y + this.r, this.x, false, this);
+         }
+     }
+ }
