@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ClassRepository
 {
-    class Shield
+    public class Shield : GameItem
     {
+        public Shield(int y, int x) : base(y, x)
+        {
+            this.HitPoint = 4;
+            this.r = 20;
+        }
     }
 }

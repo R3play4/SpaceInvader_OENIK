@@ -21,8 +21,13 @@ namespace ClassRepository
             }
             else
             {
-                this.y++;
+                this.x--;
             }
+        }
+
+        public Projectile Shoot()
+        {
+            return new Projectile(this.y + this.r, this.x, true, this);
         }
     }
 }
