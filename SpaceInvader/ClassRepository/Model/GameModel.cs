@@ -13,14 +13,21 @@ namespace ClassRepository
         public List<Shield> Shields { get; set; }
         public Player Player { get; set; }
         public GameState GameState { get; set; }
+        public int Score { get; set; }
+        public GameModel()
+        {
 
-        public GameModel(List<UFO> ufos, List<Projectile> projectiles, List<Shield> shields, Player player, GameState gamestate)
+        }
+
+        public GameModel(List<UFO> ufos, List<Projectile> projectiles, List<Shield> shields,
+                         Player player, GameState gamestate = GameState.Paused, int score = 0)
         {
             this.UFOs = ufos;
             this.Projectiles = projectiles;
             this.Shields = shields;
             this.Player = player;
             this.GameState = GameState;
+            this.Score = score;
         }
 
     }
