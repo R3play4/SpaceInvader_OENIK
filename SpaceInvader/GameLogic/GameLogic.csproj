@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96E5ECE5-FA08-40C2-9139-4F58B05B1798}</ProjectGuid>
+    <ProjectGuid>{281345E0-8A5E-4A7B-8E56-400C3BEFB44F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassRepository</RootNamespace>
-    <AssemblyName>ClassRepository</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>GameLogic</RootNamespace>
+    <AssemblyName>GameLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -41,13 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseObjects\GameItem.cs" />
-    <Compile Include="Model\GameModel.cs" />
-    <Compile Include="BaseObjects\Player.cs" />
-    <Compile Include="BaseObjects\Projectile.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseObjects\Shield.cs" />
-    <Compile Include="BaseObjects\UFO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
