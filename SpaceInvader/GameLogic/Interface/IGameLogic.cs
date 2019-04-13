@@ -52,9 +52,10 @@ namespace GameLogic.Interface
         void GameStateSwitch(/*Enum GameState*/);
 
         /// <summary>
-        /// Checks if Game has ended
+        /// Checks if the GameState is finnished
         /// </summary>
-        void GameEnd();
+        /// <returns>true if the game GameState changed to Finnished </returns>
+        bool GameEnd();
 
         /// <summary>
         /// Saves the games current state represented by the GameModel;
