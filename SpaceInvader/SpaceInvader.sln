@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.156
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInvader", "SpaceInvader\SpaceInvader.csproj", "{464BF4BA-DEE7-4FEC-AC67-114527B069E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRepository", "ClassRepository\ClassRepository.csproj", "{96E5ECE5-FA08-40C2-9139-4F58B05B1798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic.Test", "GameLogic.Test\GameLogic.Test.csproj", "{78C15019-7268-4BB3-8686-D9B1ABFE46F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{96E5ECE5-FA08-40C2-9139-4F58B05B1798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96E5ECE5-FA08-40C2-9139-4F58B05B1798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96E5ECE5-FA08-40C2-9139-4F58B05B1798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C15019-7268-4BB3-8686-D9B1ABFE46F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C15019-7268-4BB3-8686-D9B1ABFE46F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C15019-7268-4BB3-8686-D9B1ABFE46F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C15019-7268-4BB3-8686-D9B1ABFE46F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

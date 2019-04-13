@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceInvader.GameLogic
+namespace GameLogic.Test
 {
-    class GameLogic
+    public class Class1
     {
     }
 }
