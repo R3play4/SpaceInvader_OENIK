@@ -56,11 +56,12 @@ namespace GameLogic
         }
 
         /// <summary>
-        /// Switches GameState
+        /// Changes Game State
         /// </summary>
-        public void GameStateSwitch()
+        /// <param name="newState">new State</param>
+        public void GameStateSwitch(GameState newState)
         {
-            throw new NotImplementedException();
+            this.Model.GameState = newState;
         }
 
         /// <summary>

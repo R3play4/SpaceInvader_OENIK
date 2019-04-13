@@ -47,9 +47,10 @@ namespace GameLogic.Interface
         void CollisionCheck(Projectile projectile);
 
         /// <summary>
-        /// Switches GameState
+        /// Changes Game State
         /// </summary>
-        void GameStateSwitch(/*Enum GameState*/);
+        /// <param name="newState">new State</param>
+        void GameStateSwitch(GameState newState);
 
         /// <summary>
         /// Checks if the GameState is finnished

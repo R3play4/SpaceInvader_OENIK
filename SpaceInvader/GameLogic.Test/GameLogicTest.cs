@@ -58,5 +58,21 @@ namespace GameLogic.Test
             Assert.That(gameFinnshed, Is.EqualTo(false));
         }
 
+        [TestCase(GameState.Paused)]
+        public void WhenChangingGameState_StateIsChanged(GameState newState)
+        {
+            // Mocking and Setup
+            this.mockedGameModel = new Mock<GameModel>();
+            this.mockedGameModel.Object.GameState = GameState.Running;
+            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+
+            // Act
+            logic.GameStateSwitch(newState);
+
+            // Assert
+            Assert.That(logic.Model.GameState, Is.EqualTo(GameState.Paused));
+
+        }
+
     }
 }
