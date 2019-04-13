@@ -25,8 +25,8 @@ namespace GameLogic.Interface
         /// <summary>
         /// Handles player movement.
         /// </summary>
-        /// <param name="direction">true = right, false = left</param>
-        void PlayerMove(bool direction);
+        /// <param name="isMovingRight">true = right, false = left</param>
+        void PlayerMove(bool isMovingRight);
 
         /// <summary>
         /// Handles Player shooting logic.

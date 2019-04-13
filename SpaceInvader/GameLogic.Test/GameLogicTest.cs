@@ -89,5 +89,23 @@ namespace GameLogic.Test
             Assert.That(lastProjectile.x, Is.EqualTo(this.mockedGameModel.Object.Player.x));
             Assert.That(lastProjectile.y, Is.EqualTo(this.mockedGameModel.Object.Player.y));
         }
+
+        [TestCase(true)]
+        public void IfPlayerMoves_MovesToRightDirection(bool isMovingRight)
+        {
+            // Mocking and Setup
+            Player player = new Player(10, 10);
+            this.mockedGameModel = new Mock<GameModel>();
+            this.mockedGameModel.Object.Player = player;
+
+            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+
+            // Act
+            logic.PlayerMove(isMovingRight);
+
+            // Assert
+            Assert.That(this.mockedGameModel.Object.Player.x, Is.EqualTo(11));
+            Assert.That(this.mockedGameModel.Object.Player.y, Is.EqualTo(10));
+        }
     }
 }
