@@ -17,13 +17,6 @@ namespace GameLogic.Interface
     /// </summary>
     public interface IGameLogic
     {
-        // Interface might be needed
-
-        /// <summary>
-        /// Gets or sets model interface. Communicates with the GameModel layer.
-        /// </summary>
-        GameModel Model { get; set; }
-
         /// <summary>
         /// Gets or sets threads that will handle the different GameItems.
         /// </summary>

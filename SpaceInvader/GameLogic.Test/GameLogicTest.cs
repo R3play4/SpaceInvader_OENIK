@@ -4,29 +4,19 @@
 
 namespace GameLogic.Test
 {
-    using ClassRepository;
-    using Moq;
-    using NUnit.Framework;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using ClassRepository;
+    using Moq;
+    using NUnit.Framework;
 
     [TestFixture]
     public class GameLogicTest
     {
         private Mock<GameModel> mockedGameModel;
-
-        //[SetUp]
-        //public void SetUp()
-        //{
-        //    // initiates mocked GameModel
-        //    this.mockedGameModel = new Mock<GameModel>();
-
-        //    // sets game state to running.
-        //    this.mockedGameModel.Object.GameState = GameState.Running;
-        //}
 
         [Test]
         public void IfGameFinnished_ReturnsTrue()
@@ -70,9 +60,34 @@ namespace GameLogic.Test
             logic.GameStateSwitch(newState);
 
             // Assert
-            Assert.That(logic.Model.GameState, Is.EqualTo(GameState.Paused));
-
+            Assert.That(this.mockedGameModel.Object.GameState, Is.EqualTo(GameState.Paused));
         }
 
+        [Test]
+        public void WhenPlayerShoots_NewProjectileCreatedWithGoodProperties()
+        {
+            // Mocking and Setup
+            Player player = new Player(10, 10);
+
+            this.mockedGameModel = new Mock<GameModel>();
+            this.mockedGameModel.Object.Projectiles = new List<Projectile>();
+            this.mockedGameModel.Object.Player = player;
+
+            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+
+            int numberOfProjectiles = this.mockedGameModel.Object.Projectiles.Count();
+
+            // Act
+            logic.PlayerShoot();
+
+            // Assert
+            Assert.That(this.mockedGameModel.Object.Projectiles.Count(), Is.EqualTo(numberOfProjectiles + 1));
+
+            // Gets the latest projectile
+            Projectile lastProjectile = this.mockedGameModel.Object.Projectiles[this.mockedGameModel.Object.Projectiles.Count() - 1];
+
+            Assert.That(lastProjectile.x, Is.EqualTo(this.mockedGameModel.Object.Player.x));
+            Assert.That(lastProjectile.y, Is.EqualTo(this.mockedGameModel.Object.Player.y));
+        }
     }
 }

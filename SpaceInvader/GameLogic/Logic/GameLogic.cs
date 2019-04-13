@@ -18,19 +18,21 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
+        private GameModel model;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
         /// <param name="model">Game model.</param>
         public GameLogic(GameModel model)
         {
-            this.Model = model;
+            this.model = model;
         }
 
         /// <summary>
-        /// Gets or sets model interface. Communicates with the GameModel layer.
+        /// 
         /// </summary>
-        public GameModel Model { get; set; }
+        // public GameModel Model { get; }
 
         /// <summary>
         /// Gets or sets threads that will handle the different GameItems.
@@ -52,7 +54,7 @@ namespace GameLogic
         /// <returns>true if the game GameState changed to Finnished </returns>
         public bool GameEnd()
         {
-            return this.Model.GameState == GameState.Finished;
+            return this.model.GameState == GameState.Finished;
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace GameLogic
         /// <param name="newState">new State</param>
         public void GameStateSwitch(GameState newState)
         {
-            this.Model.GameState = newState;
+            this.model.GameState = newState;
         }
 
         /// <summary>
@@ -86,7 +88,8 @@ namespace GameLogic
         /// </summary>
         public void PlayerShoot()
         {
-            throw new NotImplementedException();
+            Projectile projectile = new Projectile(this.model.Player.y, this.model.Player.x, true, this.model.Player);
+            this.model.Projectiles.Add(projectile);
         }
 
         /// <summary>
