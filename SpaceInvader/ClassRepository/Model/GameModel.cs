@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassRepository.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassRepository
 {
-    public class GameModel
+    public class GameModel : IGameModel
     {
         public List<UFO> UFOs { get; set; }
         public List<Projectile> Projectiles { get; set; }

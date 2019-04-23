@@ -11,6 +11,7 @@ namespace GameLogic
     using System.Threading;
     using System.Threading.Tasks;
     using ClassRepository;
+    using ClassRepository.Model;
     using global::GameLogic.Interface;
 
     /// <summary>
@@ -18,13 +19,13 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        private GameModel model;
+        private IGameModel model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
         /// <param name="model">Game model.</param>
-        public GameLogic(GameModel model)
+        public GameLogic(IGameModel model)
         {
             this.model = model;
         }

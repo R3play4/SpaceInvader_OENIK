@@ -10,6 +10,7 @@ namespace GameLogic.Test
     using System.Text;
     using System.Threading.Tasks;
     using ClassRepository;
+    using ClassRepository.Model;
     using Moq;
     using NUnit.Framework;
 
