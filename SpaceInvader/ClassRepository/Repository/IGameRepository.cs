@@ -4,6 +4,8 @@
 
 namespace ClassRepository.Repository
 {
+    using ClassRepository.Model;
+
     /// <summary>
     /// Interface for handling XML files for saving/loading
     /// </summary>
@@ -11,6 +13,6 @@ namespace ClassRepository.Repository
     {
         GameModel LoadGameState(string filePath);
 
-        void SaveGameState(string filePath, GameModel currentState);
+        void SaveGameState(string filePath, IGameModel currentState);
     }
 }
