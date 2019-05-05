@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassRepository;
 using ClassRepository.Repository;
+using GameLogic;
 
 namespace ConsoleApp1
 {
@@ -26,11 +27,14 @@ namespace ConsoleApp1
             Player player = new Player(70, 80);
 
             GameRepository repo = new GameRepository();
-            //GameModel model = new GameModel(ufos, projectiles, shields, player);
-            //repo.SaveGameState("testSave.xml", model);
-            //Console.WriteLine("Save OK");
-            GameModel model = repo.LoadGameState("testSave.xml");
-            foreach (var item in model.UFOs)
+            GameModel model = new GameModel();
+            GameLogic.GameLogic logic = new GameLogic.GameLogic(model);
+
+            GameModel model2 = new GameModel(ufos, projectiles, shields, player);
+            repo.SaveGameState("testSave.xml", model2);
+            Console.WriteLine("Save OK");
+            logic.LoadGame("testSave.xml");
+            foreach (UFO item in logic.model.UFOs)
             {
                 Console.WriteLine($"UFO, koordinata {item.X}, {item.Y}");
             }

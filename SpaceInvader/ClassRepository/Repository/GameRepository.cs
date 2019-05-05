@@ -13,7 +13,7 @@ namespace ClassRepository.Repository
     /// </summary>
     public class GameRepository : IGameRepository
     {
-        private XmlSerializer serializer = new XmlSerializer(typeof(IGameModel));
+        private XmlSerializer serializer = new XmlSerializer(typeof(GameModel));
 
         public GameModel LoadGameState(string filePath)
         {
@@ -23,7 +23,7 @@ namespace ClassRepository.Repository
             return model;
         }
 
-        public void SaveGameState(string filePath, IGameModel currentState)
+        public void SaveGameState(string filePath, GameModel currentState)
         {
             StreamWriter writer = new StreamWriter(filePath);
             this.serializer.Serialize(writer, currentState);

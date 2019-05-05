@@ -20,7 +20,8 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        private IGameModel model;
+        public IGameModel model;
+
         private IGameRepository repository;
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace GameLogic
         /// <param name="fileName">name of the save file, XML format</param>
         public void SaveGame(string fileName)
         {
-            this.repository.SaveGameState(fileName, this.model);
+            this.repository.SaveGameState(fileName, (GameModel)this.model);
         }
     }
 }

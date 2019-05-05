@@ -13,6 +13,6 @@ namespace ClassRepository.Repository
     {
         GameModel LoadGameState(string filePath);
 
-        void SaveGameState(string filePath, IGameModel currentState);
+        void SaveGameState(string filePath, GameModel currentState);
     }
 }
