@@ -54,11 +54,13 @@ namespace GameLogic.Interface
         /// <summary>
         /// Saves the games current state represented by the GameModel;
         /// </summary>
-        void SaveGame();
+        /// <param name="fileName">name of the save file, XML format</param>
+        void SaveGame(string fileName);
 
         /// <summary>
         /// Loads a desired state of the GameModel, that was saved earlier.
         /// </summary>
-        void LoadGame();
+        /// <param name="fileName">name of the save file, XML format</param>
+        void LoadGame(string fileName);
     }
 }

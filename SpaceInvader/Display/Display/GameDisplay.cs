@@ -24,7 +24,7 @@ namespace Display.Display
 
             // Background
             dg.Children.Add(new GeometryDrawing(Config.BackgroundColor, new Pen(Config.FrameColor, Config.FrameSize),
-                new RectangleGeometry(new Rect(0, 0, Config.WindowWidth, Config.WindowHeight));
+                new RectangleGeometry(new Rect(0, 0, Config.WindowWidth, Config.WindowHeight))
                 ));
 
             // Playership
@@ -33,6 +33,10 @@ namespace Display.Display
                 new RectangleGeometry(new Rect(1, 1, 10, 10))
                 ));
 
+            foreach (GameItem ufo in gameModel.UFOs)
+            {
+                dg.Children.Add(new)
+            }
         }
     }
 }

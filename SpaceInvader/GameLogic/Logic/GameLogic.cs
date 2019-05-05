@@ -12,6 +12,7 @@ namespace GameLogic
     using System.Threading.Tasks;
     using ClassRepository;
     using ClassRepository.Model;
+    using ClassRepository.Repository;
     using global::GameLogic.Interface;
 
     /// <summary>
@@ -21,6 +22,8 @@ namespace GameLogic
     {
         private IGameModel model;
 
+        private IGameRepository repository;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -28,6 +31,7 @@ namespace GameLogic
         public GameLogic(IGameModel model)
         {
             this.model = model;
+            this.repository = new GameRepository();
         }
 
         /// <summary>
@@ -70,9 +74,10 @@ namespace GameLogic
         /// <summary>
         /// Loads a desired state of the GameModel, that was saved earlier.
         /// </summary>
-        public void LoadGame()
+        /// <param name="fileName">name of the save file, XML format</param>
+        public void LoadGame(string fileName)
         {
-            throw new NotImplementedException();
+            this.model = this.repository.LoadGameState(fileName);
         }
 
         /// <summary>
@@ -96,9 +101,10 @@ namespace GameLogic
         /// <summary>
         /// Saves the games current state represented by the GameModel;
         /// </summary>
-        public void SaveGame()
+        /// <param name="fileName">name of the save file, XML format</param>
+        public void SaveGame(string fileName)
         {
-            throw new NotImplementedException();
+            this.repository.SaveGameState(fileName, (GameModel)this.model);
         }
     }
 }

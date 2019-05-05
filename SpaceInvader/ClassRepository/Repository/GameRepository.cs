@@ -6,6 +6,7 @@ namespace ClassRepository.Repository
 {
     using System.IO;
     using System.Xml.Serialization;
+    using ClassRepository.Model;
 
     /// <summary>
     /// Implementing class of IGameRepository (XML handling)

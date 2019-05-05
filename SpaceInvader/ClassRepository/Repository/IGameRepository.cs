@@ -4,6 +4,8 @@
 
 namespace ClassRepository.Repository
 {
+    using ClassRepository.Model;
+
     /// <summary>
     /// Interface for handling XML files for saving/loading
     /// </summary>
