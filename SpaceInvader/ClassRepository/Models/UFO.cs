@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="UFO.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ClassRepository
 {
     public class UFO : GameItem
     {
-        public int Points { get; set; }
-        public UFO(int x, int y, int points) : base(x,y)
+        public UFO()
+        {
+        }
+
+        public UFO(int x, int y, int points)
+            : base(x, y)
         {
             this.HitPoint = 1;
             this.Points = points;
         }
+
+        public int Points { get; set; }
+
         public void Move()
         {
             for (int i = 0; i < 100; i++)
@@ -22,20 +27,21 @@ namespace ClassRepository
                 {
                     if (i % 2 == 0)
                     {
-                        this.x++;
+                        this.X++;
                     }
                     else
                     {
-                        this.x--;
-                    }                    
+                        this.X--;
+                    }
                 }
-                this.y--;
+
+                this.Y--;
             }
         }
 
         public Projectile Shoot()
         {
-            return new Projectile(this.y + this.r, this.x, false, this);
+            return new Projectile(this.Y + this.R, this.X, false, this);
         }
     }
 }

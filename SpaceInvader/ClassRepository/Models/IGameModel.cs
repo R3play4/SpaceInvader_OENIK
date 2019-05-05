@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="IGameModel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ClassRepository.Model
 {
+    using System.Collections.Generic;
+
     public interface IGameModel
     {
         List<UFO> UFOs { get; set; }

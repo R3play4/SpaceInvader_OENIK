@@ -87,8 +87,8 @@ namespace GameLogic.Test
             // Gets the latest projectile
             Projectile lastProjectile = this.mockedGameModel.Object.Projectiles[this.mockedGameModel.Object.Projectiles.Count() - 1];
 
-            Assert.That(lastProjectile.x, Is.EqualTo(this.mockedGameModel.Object.Player.x));
-            Assert.That(lastProjectile.y, Is.EqualTo(this.mockedGameModel.Object.Player.y));
+            Assert.That(lastProjectile.X, Is.EqualTo(this.mockedGameModel.Object.Player.X));
+            Assert.That(lastProjectile.Y, Is.EqualTo(this.mockedGameModel.Object.Player.Y));
         }
 
         [TestCase(true)]
@@ -105,8 +105,8 @@ namespace GameLogic.Test
             logic.PlayerMove(isMovingRight);
 
             // Assert
-            Assert.That(this.mockedGameModel.Object.Player.x, Is.EqualTo(11));
-            Assert.That(this.mockedGameModel.Object.Player.y, Is.EqualTo(10));
+            Assert.That(this.mockedGameModel.Object.Player.X, Is.EqualTo(11));
+            Assert.That(this.mockedGameModel.Object.Player.Y, Is.EqualTo(10));
         }
     }
 }

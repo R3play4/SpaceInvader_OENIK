@@ -89,7 +89,7 @@ namespace GameLogic
         /// </summary>
         public void PlayerShoot()
         {
-            Projectile projectile = new Projectile(this.model.Player.y, this.model.Player.x, true, this.model.Player);
+            Projectile projectile = new Projectile(this.model.Player.Y, this.model.Player.X, true, this.model.Player);
             this.model.Projectiles.Add(projectile);
         }
 
