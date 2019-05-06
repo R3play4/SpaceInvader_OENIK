@@ -84,7 +84,7 @@ namespace GameLogic
         /// Handles player movement.
         /// </summary>
         /// <param name="isMovingRight">true = right, false = left</param>
-        public void PlayerMove(bool isMovingRight)
+        public void PlayerMove(double isMovingRight)
         {
             this.model.Player.Move(isMovingRight);
         }
