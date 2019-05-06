@@ -10,7 +10,7 @@ namespace ClassRepository
         {
         }
 
-        public Shield(int y = 20, int x = 30)
+        public Shield(double y = 20, double x = 30)
             : base(y, x)
         {
             this.HitPoint = 4;

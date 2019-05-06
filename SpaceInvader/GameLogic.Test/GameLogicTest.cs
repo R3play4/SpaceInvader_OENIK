@@ -91,8 +91,8 @@ namespace GameLogic.Test
             Assert.That(lastProjectile.Y, Is.EqualTo(this.mockedGameModel.Object.Player.Y));
         }
 
-        [TestCase(true)]
-        public void IfPlayerMoves_MovesToRightDirection(bool isMovingRight)
+        [TestCase(1)]
+        public void IfPlayerMoves_MovesToRightDirection(double isMovingRight)
         {
             // Mocking and Setup
             Player player = new Player(10, 10);

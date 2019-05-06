@@ -10,17 +10,17 @@ namespace ClassRepository
         {
         }
 
-        public GameItem(int y, int x)
+        public GameItem(double y, double x)
         {
             this.Y = y;
             this.X = x;
         }
 
-        public int Y { get; set; }
+        public double Y { get; set; }
 
-        public int X { get; set; }
+        public double X { get; set; }
 
-        public int R { get; set; }
+        public double R { get; set; }
 
         public int HitPoint { get; set; }
 

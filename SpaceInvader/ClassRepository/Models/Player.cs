@@ -10,13 +10,19 @@ namespace ClassRepository
         {
         }
 
-        public Player(int y, int x)
+        public Player(double y, double x)
             : base(y, x)
         {
             this.R = 10;
             this.HitPoint = 3;
         }
 
+        public void Move(double diff)
+        {
+            this.X += diff;
+        }
+
+        /*
         public void Move(bool isMovingRight)
         {
             if (isMovingRight)
@@ -28,6 +34,7 @@ namespace ClassRepository
                 this.X--;
             }
         }
+        */
 
         public Projectile Shoot()
         {

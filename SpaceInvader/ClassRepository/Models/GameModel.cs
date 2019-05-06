@@ -18,6 +18,7 @@ namespace ClassRepository
     {
         public GameModel()
         {
+            Player = new Player(350, 200);
         }
 
         public GameModel(List<UFO> ufos, List<Projectile> projectiles, List<Shield> shields, Player player, GameState gamestate = GameState.Paused, int score = 0)
