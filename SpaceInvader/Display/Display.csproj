@@ -67,7 +67,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="Display\GameDisplay.cs" />
+    <Compile Include="GameDisplay\GameControl.cs" />
+    <Compile Include="GameDisplay\GameDisplay.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,6 +105,10 @@
     <ProjectReference Include="..\ClassRepository\ClassRepository.csproj">
       <Project>{96e5ece5-fa08-40c2-9139-4f58b05b1798}</Project>
       <Name>ClassRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
+      <Project>{281345e0-8a5e-4a7b-8e56-400c3befb44f}</Project>
+      <Name>GameLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
