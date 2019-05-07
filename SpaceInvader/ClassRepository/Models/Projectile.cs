@@ -27,11 +27,11 @@ namespace ClassRepository
         {
             if (this.IsMovingUp)
             {
-                this.Y--;
+                this.Y -= 3;
             }
             else
             {
-                this.Y++;
+                this.Y += 3;
             }
         }
     }

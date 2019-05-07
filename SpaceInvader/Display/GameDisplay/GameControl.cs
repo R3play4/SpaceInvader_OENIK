@@ -30,7 +30,7 @@ namespace Display.GameDisplay
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             gameRepo = new GameRepository();
-            gameModel = this.gameRepo.LoadGameState("default.xml");
+            gameModel = this.gameRepo.LoadGameState(@"default.xml");
             gameLogic = new GameLogic.GameLogic(gameModel);
             gameDisplay = new GameDisplay(gameModel);
 
