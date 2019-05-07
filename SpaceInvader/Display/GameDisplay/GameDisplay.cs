@@ -38,15 +38,24 @@ namespace Display.GameDisplay
             // Ufo-s
             foreach (UFO ufo in gameModel.UFOs)
             {
-                dg.Children.Add(new GeometryDrawing(GetUfoColor(ufo.Points), new Pen(GetUfoColor(ufo.Points), 1),
+                 dg.Children.Add(new GeometryDrawing(GetUfoColor(ufo.Points), new Pen(GetUfoColor(ufo.Points), 1),
                     new RectangleGeometry(new Rect(ufo.X, ufo.Y, 15, 15))
                     ));
             }
 
+            // Shields
             foreach (Shield shield in gameModel.Shields)
             {
                 dg.Children.Add(new GeometryDrawing(Config.ShieldColor, new Pen(Config.ShieldColor, 1),
                     new RectangleGeometry(new Rect(shield.X, shield.Y, 40, 20))
+                    ));
+            }
+
+            // Projectiles
+            foreach (Projectile projectile in gameModel.Projectiles)
+            {
+                dg.Children.Add(new GeometryDrawing(Config.ProjectileColor, new Pen(Config.ProjectileColor, 1),
+                    new RectangleGeometry(new Rect(projectile.X, projectile.Y, 2, 6))
                     ));
             }
 

@@ -10,9 +10,10 @@ namespace ClassRepository
         {
         }
 
-        public Projectile(double y, double x, bool direction, GameItem sourceObject)
-            : base(y, x)
+        public Projectile(double x, double y, bool direction, GameItem sourceObject)
+            : base(x, y)
         {
+            this.HitPoint = 1;
             this.SourceObject = sourceObject;
             this.IsMovingUp = direction;
             this.R = 2;

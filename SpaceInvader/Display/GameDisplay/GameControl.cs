@@ -47,9 +47,9 @@ namespace Display.GameDisplay
                 ufoTimer.Start();
 
                 projectileTimer = new DispatcherTimer();
-                projectileTimer.Interval = TimeSpan.FromMilliseconds(100);
+                projectileTimer.Interval = TimeSpan.FromMilliseconds(10);
                 projectileTimer.Tick += ProjectileTimer_Tick;
-                //projectileTimer.Start();
+                projectileTimer.Start();
             }
         }
 

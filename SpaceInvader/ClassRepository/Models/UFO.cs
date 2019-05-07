@@ -45,11 +45,11 @@ namespace ClassRepository
             }
         }
 
-        private void MoveDown() => this.Y += 10;
-
         public Projectile Shoot()
         {
             return new Projectile(this.Y + this.R, this.X, false, this);
         }
+
+        private void MoveDown() => this.Y += 10;
     }
 }

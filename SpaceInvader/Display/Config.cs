@@ -24,9 +24,12 @@ namespace Display
         //UFO
         public static Brush UFO1Color = Brushes.Orange;
         public static Brush UFO2Color = Brushes.Yellow;
-        public static Brush UFO3Color = Brushes.Blue;
+        public static Brush UFO3Color = Brushes.LightBlue;
 
         //Shield
         public static Brush ShieldColor = Brushes.Green;
+
+        //Projectile
+        public static Brush ProjectileColor = Brushes.White;
     }
 }

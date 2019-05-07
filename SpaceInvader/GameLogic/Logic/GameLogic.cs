@@ -20,7 +20,7 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        private IGameModel model;
+        public IGameModel model;
 
         private IGameRepository repository;
 
@@ -110,8 +110,7 @@ namespace GameLogic
         /// </summary>
         public void PlayerShoot()
         {
-            Projectile projectile = new Projectile(this.model.Player.Y, this.model.Player.X, true, this.model.Player);
-            this.model.Projectiles.Add(projectile);
+            this.model.Projectiles.Add(this.model.Player.Shoot());
         }
 
         /// <summary>
