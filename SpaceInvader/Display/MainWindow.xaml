@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:Display"
         xmlns:controls="clr-namespace:Display.GameDisplay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <controls:GameControl Width="700" Height="300">
+        Title="MainWindow"
+        Height="{x:Static local:Config.WindowHeight}"
+        Width="{x:Static local:Config.WindowWidth}">
+    <controls:GameControl>
         
     </controls:GameControl>
  

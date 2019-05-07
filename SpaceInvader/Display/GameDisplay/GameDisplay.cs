@@ -21,27 +21,51 @@ namespace Display.GameDisplay
         public void Display(DrawingContext context)
         {
             DrawingGroup dg = new DrawingGroup();
+            //context.DrawRectangle(Config.BackgroundColor, new Pen(Config.FrameColor, Config.FrameSize), new Rect(0, 0, Config.WindowWidth - Config.FrameSize * 4, Config.WindowHeight - Config.FrameSize * 4));
+            //new Pen(Config.FrameColor, Config.FrameSize)
 
             // Background
             dg.Children.Add(new GeometryDrawing(Config.BackgroundColor, new Pen(Config.FrameColor, Config.FrameSize),
-                new RectangleGeometry(new Rect(0, 0, Config.WindowWidth, Config.WindowHeight))
+                new RectangleGeometry(new Rect(0, 0, Config.WindowWidth - Config.FrameSize * 4, Config.WindowHeight - 32 - Config.FrameSize * 2))
                 ));
 
             // Playership
             dg.Children.Add(new GeometryDrawing(Config.ShipColor, new Pen(Config.ShipFrameColor, 1),
                 // ide kell majd GameItem.Rect
-                new RectangleGeometry(new Rect(1, 1, 10, 10))
+                new RectangleGeometry(new Rect(gameModel.Player.X, gameModel.Player.Y, 15, 15))
                 ));
 
             // Ufo-s
-            foreach (GameItem ufo in gameModel.UFOs)
+            foreach (UFO ufo in gameModel.UFOs)
             {
-                dg.Children.Add(new GeometryDrawing(Config.UFO1Color, new Pen(Config.UFO1Color, 1),
-                    new RectangleGeometry(new Rect(ufo.X, ufo.Y, 10, 10))
+                dg.Children.Add(new GeometryDrawing(GetUfoColor(ufo.Points), new Pen(GetUfoColor(ufo.Points), 1),
+                    new RectangleGeometry(new Rect(ufo.X, ufo.Y, 15, 15))
+                    ));
+            }
+
+            foreach (Shield shield in gameModel.Shields)
+            {
+                dg.Children.Add(new GeometryDrawing(Config.ShieldColor, new Pen(Config.ShieldColor, 1),
+                    new RectangleGeometry(new Rect(shield.X, shield.Y, 40, 20))
                     ));
             }
 
             context.DrawDrawing(dg);
+        }
+
+        public Brush GetUfoColor(int point)
+        {
+            switch (point)
+            {
+                case 10:
+                    return Config.UFO1Color;
+                case 20:
+                    return Config.UFO2Color;
+                case 40:
+                    return Config.UFO3Color;
+                default:
+                    return null;
+            }
         }
     }
 }

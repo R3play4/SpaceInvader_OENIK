@@ -10,7 +10,7 @@ namespace ClassRepository
         {
         }
 
-        public GameItem(double y, double x)
+        public GameItem(double x, double y)
         {
             this.Y = y;
             this.X = x;
