@@ -53,6 +53,14 @@ namespace GameLogic
             throw new NotImplementedException();
         }
 
+        public void ProjectileMove()
+        {
+            foreach (Projectile projectile in this.model.Projectiles)
+            {
+                projectile.Move();
+            }
+        }
+
         /// <summary>
         /// Checks if the GameState is finnished
         /// </summary>
@@ -87,6 +95,14 @@ namespace GameLogic
         public void PlayerMove(double isMovingRight)
         {
             this.model.Player.Move(isMovingRight);
+        }
+
+        public void UfoMove()
+        {
+            foreach (UFO ufo in this.model.UFOs)
+            {
+                ufo.Move();
+            }
         }
 
         /// <summary>

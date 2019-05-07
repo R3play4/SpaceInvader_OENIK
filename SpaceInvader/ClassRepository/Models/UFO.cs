@@ -6,6 +6,8 @@ namespace ClassRepository
 {
     public class UFO : GameItem
     {
+        private int sidewaysMoveCount = 15;
+
         public UFO()
         {
         }
@@ -21,23 +23,29 @@ namespace ClassRepository
 
         public void Move()
         {
-            for (int i = 0; i < 100; i++)
+            if (this.sidewaysMoveCount > 0)
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        this.X++;
-                    }
-                    else
-                    {
-                        this.X--;
-                    }
-                }
-
-                this.Y--;
+                this.X += 5;
+                this.sidewaysMoveCount--;
+            }
+            else if (this.sidewaysMoveCount == 0)
+            {
+                this.MoveDown();
+                this.sidewaysMoveCount--;
+            }
+            else if (this.sidewaysMoveCount >= -15)
+            {
+                this.X -= 5;
+                this.sidewaysMoveCount--;
+            }
+            else
+            {
+                this.MoveDown();
+                this.sidewaysMoveCount = 15;
             }
         }
+
+        private void MoveDown() => this.Y += 10;
 
         public Projectile Shoot()
         {

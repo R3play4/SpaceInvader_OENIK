@@ -19,7 +19,8 @@ namespace Display.GameDisplay
         GameModel gameModel;
         GameDisplay gameDisplay;
         GameRepository gameRepo;
-        DispatcherTimer timer;
+        DispatcherTimer ufoTimer;
+        DispatcherTimer projectileTimer;
 
         public GameControl()
         {
@@ -40,16 +41,28 @@ namespace Display.GameDisplay
             {
                 win.KeyDown += Win_KeyDown;
 
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(25);
-                timer.Tick += Timer_Tick;
-                timer.Start();
+                ufoTimer = new DispatcherTimer();
+                ufoTimer.Interval = TimeSpan.FromMilliseconds(1000);
+                ufoTimer.Tick += UfoTimer_Tick;
+                ufoTimer.Start();
+
+                projectileTimer = new DispatcherTimer();
+                projectileTimer.Interval = TimeSpan.FromMilliseconds(100);
+                projectileTimer.Tick += ProjectileTimer_Tick;
+                //projectileTimer.Start();
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void ProjectileTimer_Tick(object sender, EventArgs e)
         {
-            // UFO Mozgat
+            this.gameLogic.ProjectileMove();
+            InvalidateVisual();
+        }
+
+        private void UfoTimer_Tick(object sender, EventArgs e)
+        {
+            this.gameLogic.UfoMove();
+            InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -61,6 +74,10 @@ namespace Display.GameDisplay
             else if (e.Key == System.Windows.Input.Key.Right)
             {
                 this.gameLogic.PlayerMove(5);
+            }
+            else if (e.Key == System.Windows.Input.Key.Space)
+            {
+                this.gameLogic.PlayerShoot();
             }
             InvalidateVisual();
         }
