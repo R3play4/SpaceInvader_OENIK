@@ -26,6 +26,8 @@ namespace GameLogic
 
         private IGameRepository repository;
 
+        private Random r = new Random();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -124,6 +126,14 @@ namespace GameLogic
         public void GameStateSwitch(GameState newState)
         {
             this.model.GameState = newState;
+        }
+
+        public void UfoShoot()
+        {
+            if (r.Next(1,4) % 3 == 0)
+            {
+                this.model.Projectiles.Add(this.model.UFOs[r.Next() % this.model.UFOs.Count].Shoot());
+            }
         }
 
         /// <summary>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using GlobalSettings;
 
 namespace Display.GameDisplay
 {
@@ -25,12 +26,12 @@ namespace Display.GameDisplay
             //new Pen(Config.FrameColor, Config.FrameSize)
 
             // Background
-            dg.Children.Add(new GeometryDrawing(Config.BackgroundColor, new Pen(Config.FrameColor, Config.FrameSize),
-                new RectangleGeometry(new Rect(0, 0, Config.WindowWidth - Config.FrameSize * 4, Config.WindowHeight - 32 - Config.FrameSize * 2))
+            dg.Children.Add(new GeometryDrawing(Settings.BackgroundColor, new Pen(Settings.FrameColor, Settings.FrameSize),
+                new RectangleGeometry(new Rect(0, 0, Settings.WindowWidth - Settings.FrameSize * 4, Settings.WindowHeight - 32 - Settings.FrameSize * 2))
                 ));
 
             // Playership
-            dg.Children.Add(new GeometryDrawing(Config.ShipColor, new Pen(Config.ShipFrameColor, 1),                
+            dg.Children.Add(new GeometryDrawing(Settings.ShipColor, new Pen(Settings.ShipFrameColor, 1),                
                 this.gameModel.Player.Shape()));
 
             // Ufo-s
@@ -42,13 +43,13 @@ namespace Display.GameDisplay
             // Shields
             foreach (Shield shield in gameModel.Shields)
             {
-                dg.Children.Add(new GeometryDrawing(Config.ShieldColor, new Pen(Config.ShieldColor, 1), shield.Shape()));
+                dg.Children.Add(new GeometryDrawing(Settings.ShieldColor, new Pen(Settings.ShieldColor, 1), shield.Shape()));
             }
 
             // Projectiles
             foreach (Projectile projectile in gameModel.Projectiles)
             {
-                dg.Children.Add(new GeometryDrawing(Config.ProjectileColor, new Pen(Config.ProjectileColor, 1), projectile.Shape()));
+                dg.Children.Add(new GeometryDrawing(Settings.ProjectileColor, new Pen(Settings.ProjectileColor, 1), projectile.Shape()));
             }
 
             context.DrawDrawing(dg);
@@ -59,11 +60,11 @@ namespace Display.GameDisplay
             switch (point)
             {
                 case 10:
-                    return Config.UFO1Color;
+                    return Settings.UFO1Color;
                 case 20:
-                    return Config.UFO2Color;
+                    return Settings.UFO2Color;
                 case 40:
-                    return Config.UFO3Color;
+                    return Settings.UFO3Color;
                 default:
                     return null;
             }

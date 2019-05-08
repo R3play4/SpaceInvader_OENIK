@@ -100,6 +100,7 @@ namespace Display.GameDisplay
         private void UfoTimer_Tick(object sender, EventArgs e)
         {
             this.gameLogic.UfoMove();
+            this.gameLogic.UfoShoot();
             InvalidateVisual();
         }
 

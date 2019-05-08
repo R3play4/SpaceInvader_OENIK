@@ -33,7 +33,7 @@ namespace GlobalSettings
         public const int ShieldHeight = 15;
 
         //Projectile
-        public static Brush ProjectileColor = Brushes.White;
+        public static Brush ProjectileColor = Brushes.Orange;
         public const int ProjectileLength = 6;
         public const int ProjectileWidth = 2;
     }

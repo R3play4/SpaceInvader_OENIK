@@ -56,7 +56,7 @@ namespace ClassRepository
 
         public Projectile Shoot()
         {
-            return new Projectile(this.Y + this.R, this.X, false, this);
+            return new Projectile(this.X, this.Y + this.R, false, this);
         }
 
         private void MoveDown() => this.Y += 10;
