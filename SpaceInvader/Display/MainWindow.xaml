@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Display"
+        xmlns:local="clr-namespace:GlobalSettings"
         xmlns:controls="clr-namespace:Display.GameDisplay"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="{x:Static local:Config.WindowHeight}"
-        Width="{x:Static local:Config.WindowWidth}">
+        Height="{x:Static local:Settings.WindowHeight}"
+        Width="{x:Static local:Settings.WindowWidth}">
     <controls:GameControl>
         
     </controls:GameControl>

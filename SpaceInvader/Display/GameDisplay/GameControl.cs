@@ -62,7 +62,6 @@ namespace Display.GameDisplay
         private void UfoTimer_Tick(object sender, EventArgs e)
         {
             this.gameLogic.UfoMove();
-            InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -79,7 +78,6 @@ namespace Display.GameDisplay
             {
                 this.gameLogic.PlayerShoot();
             }
-            InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
