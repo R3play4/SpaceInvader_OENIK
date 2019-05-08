@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="GameDisplay\GameControl.cs" />
     <Compile Include="GameDisplay\GameDisplay.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -108,10 +109,6 @@
     <ProjectReference Include="..\GameLogic\GameLogic.csproj">
       <Project>{281345e0-8a5e-4a7b-8e56-400c3befb44f}</Project>
       <Name>GameLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GlobalSettings\GlobalSettings.csproj">
-      <Project>{7c98ff20-543e-4495-a162-10e475351328}</Project>
-      <Name>GlobalSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

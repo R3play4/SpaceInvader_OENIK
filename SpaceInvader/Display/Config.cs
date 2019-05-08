@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace GlobalSettings
+namespace Display
 {
-    public class Settings
+    public class Config
     {
         // Window Config
         public static double WindowWidth = 400;
