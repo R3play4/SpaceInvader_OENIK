@@ -37,7 +37,8 @@ namespace GameLogic.Interface
         /// Checks if the projectile hit any relevant GameItems
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
-        void CollisionCheck(Projectile projectile);
+        /// <param name="gameItem">gameItem that is examined</param>
+        bool CollisionCheck(Projectile projectile, GameItem gameItem);
 
         /// <summary>
         /// Changes Game State

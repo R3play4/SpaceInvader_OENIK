@@ -10,10 +10,12 @@ namespace GameLogic
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Windows.Media;
     using ClassRepository;
     using ClassRepository.Model;
     using ClassRepository.Repository;
     using global::GameLogic.Interface;
+    using GlobalSettings;
 
     /// <summary>
     /// Handles the Game's logic. Implements IGameLogic interface
@@ -48,9 +50,9 @@ namespace GameLogic
         /// Checks if the projectile hit any relevant GameItems
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
-        public void CollisionCheck(Projectile projectile)
+        public bool CollisionCheck(Projectile projectile, GameItem gameItem)
         {
-            throw new NotImplementedException();
+            return Geometry.Combine(projectile.Shape(), gameItem.Shape(), GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
 
         public void ProjectileMove()
@@ -58,6 +60,51 @@ namespace GameLogic
             foreach (Projectile projectile in this.model.Projectiles)
             {
                 projectile.Move();
+            }
+        }
+
+        public void HandleCollision(Projectile projectile, GameItem gameItem)
+        {
+            projectile.TakeDamage();
+            gameItem.TakeDamage();
+            if (projectile.SourceObject.GetType() == typeof(Player))
+            {
+                //this.model.Score += ((UFO)gameItem).Points;
+            }
+            this.DeathCheck(projectile, typeof(Projectile));
+        }
+
+        public void DeathCheck(GameItem item, Type type)
+        {
+            if (item.HitPoint == 0)
+            {
+                if (type == typeof(Projectile))
+                {
+                    this.model.Projectiles.Remove((Projectile)item);
+                }
+                else if (type == typeof(UFO))
+                {
+                    this.model.UFOs.Remove((UFO)item);
+                }
+                else if (type == typeof(Shield))
+                {
+                    this.model.Shields.Remove((Shield)item);
+                }
+                else if (type == typeof(Player))
+                {
+                    this.model.GameState = GameState.Finished;
+                }
+            }
+        }
+
+        public void CleanupOffscreenProjectiles()
+        {
+            for (int i = this.model.Projectiles.Count - 1; i >= 0; i--)
+            {
+                if (this.model.Projectiles[i].Y < 0 || this.model.Projectiles[i].Y > Settings.WindowHeight)
+                {
+                    this.model.Projectiles.RemoveAt(i);
+                }
             }
         }
 

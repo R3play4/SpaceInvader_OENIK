@@ -47,7 +47,7 @@ namespace Display.GameDisplay
                 ufoTimer.Start();
 
                 projectileTimer = new DispatcherTimer();
-                projectileTimer.Interval = TimeSpan.FromMilliseconds(10);
+                projectileTimer.Interval = TimeSpan.FromMilliseconds(25);
                 projectileTimer.Tick += ProjectileTimer_Tick;
                 projectileTimer.Start();
             }
@@ -56,6 +56,44 @@ namespace Display.GameDisplay
         private void ProjectileTimer_Tick(object sender, EventArgs e)
         {
             this.gameLogic.ProjectileMove();
+
+            for (int i = this.gameLogic.model.Projectiles.Count - 1; i >= 0; i--)
+            {
+                for (int j = this.gameLogic.model.Shields.Count - 1; j >= 0; j--)
+                {
+                    if (this.gameLogic.model.Projectiles.Count > i &&
+                        this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]))
+                    {
+                        this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]);
+                        this.gameLogic.DeathCheck(this.gameLogic.model.Shields[j], typeof(Shield));
+                    }
+                }
+
+                if (this.gameLogic.model.Projectiles.Count > i &&
+                    this.gameLogic.model.Projectiles[i].SourceObject.GetType() == typeof(Player))
+                {
+                    for (int k = this.gameLogic.model.UFOs.Count - 1; k >= 0; k--)
+                    {
+                        if (this.gameLogic.model.Projectiles.Count > i &&
+                            this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]))
+                        {
+                            this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]);
+                            this.gameLogic.DeathCheck(this.gameLogic.model.UFOs[k], typeof(UFO));
+                        }
+                    }
+                }
+                else
+                {
+                    if (this.gameLogic.model.Projectiles.Count > i &&
+                        this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player))
+                    {
+                        this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player);
+                        this.gameLogic.DeathCheck(this.gameLogic.model.Player, typeof(Player));
+                    }
+                }
+            }
+
+            this.gameLogic.CleanupOffscreenProjectiles();
             InvalidateVisual();
         }
 
