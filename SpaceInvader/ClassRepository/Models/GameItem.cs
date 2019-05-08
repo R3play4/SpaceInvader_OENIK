@@ -4,6 +4,8 @@
 
 namespace ClassRepository
 {
+    using System.Windows.Media;
+
     public abstract class GameItem
     {
         public GameItem()
@@ -26,5 +28,7 @@ namespace ClassRepository
 
         // public string ImgPath { get; set; }
         public void TakeDamage() => this.HitPoint--;
+
+        public abstract Geometry Shape();
     }
 }

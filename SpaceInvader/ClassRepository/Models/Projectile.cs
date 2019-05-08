@@ -4,6 +4,10 @@
 
 namespace ClassRepository
 {
+    using System.Windows;
+    using System.Windows.Media;
+    using GlobalSettings;
+
     public class Projectile : GameItem
     {
         public Projectile()
@@ -22,6 +26,11 @@ namespace ClassRepository
         public bool IsMovingUp { get; set; }
 
         public GameItem SourceObject { get; set; }
+
+        public override Geometry Shape()
+        {
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ProjectileWidth, Settings.ProjectileLength));
+        }
 
         public void Move()
         {

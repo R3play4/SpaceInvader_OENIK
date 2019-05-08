@@ -4,6 +4,10 @@
 
 namespace ClassRepository
 {
+    using System.Windows;
+    using System.Windows.Media;
+    using GlobalSettings;
+
     public class UFO : GameItem
     {
         private int sidewaysMoveCount = 15;
@@ -43,6 +47,11 @@ namespace ClassRepository
                 this.MoveDown();
                 this.sidewaysMoveCount = 15;
             }
+        }
+
+        public override Geometry Shape()
+        {
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ShipSize, Settings.ShipSize));
         }
 
         public Projectile Shoot()

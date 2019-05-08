@@ -4,6 +4,10 @@
 
 namespace ClassRepository
 {
+    using System.Windows;
+    using System.Windows.Media;
+    using GlobalSettings;
+
     public class Player : GameItem
     {
         public Player()
@@ -20,6 +24,11 @@ namespace ClassRepository
         public void Move(double diff)
         {
             this.X += diff;
+        }
+
+        public override Geometry Shape()
+        {
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ShipSize, Settings.ShipSize));
         }
 
         public Projectile Shoot()

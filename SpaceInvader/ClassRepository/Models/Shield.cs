@@ -4,6 +4,10 @@
 
 namespace ClassRepository
 {
+    using System.Windows;
+    using System.Windows.Media;
+    using GlobalSettings;
+
     public class Shield : GameItem
     {
         public Shield()
@@ -15,6 +19,11 @@ namespace ClassRepository
         {
             this.HitPoint = 4;
             this.R = 20;
+        }
+
+        public override Geometry Shape()
+        {
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ShieldWidth, Settings.ShieldHeight));
         }
     }
 }
