@@ -117,5 +117,8 @@
   <ItemGroup>
     <Resource Include="DefaultGameState\default.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SpaceShip.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
