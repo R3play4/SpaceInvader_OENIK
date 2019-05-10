@@ -148,10 +148,13 @@ namespace GameLogic
         /// <summary>
         /// Handles player movement.
         /// </summary>
-        /// <param name="isMovingRight">true = right, false = left</param>
-        public void PlayerMove(double isMovingRight)
+        /// <param name="movement">true = right, false = left</param>
+        public void PlayerMove(double movement)
         {
-            this.model.Player.Move(isMovingRight);
+            if ((model.Player.X + movement) < 0 || (model.Player.X + Settings.ShipSize + movement) >= Settings.WindowWidth) // Checks if the left or right side was reached.
+                movement = 0;
+
+            this.model.Player.Move(movement);
         }
 
         public void UfoMove()
