@@ -33,7 +33,8 @@ namespace ClassRepository
 
         public Projectile Shoot()
         {
-            return new Projectile(this.X, this.Y-this.R, true, this);
+            //
+            return new Projectile(this.X + (Settings.ShipSize/2), this.Y-this.R, true, this);
         }
     }
 }
