@@ -22,13 +22,25 @@ namespace Display.GameDisplay
 
         private void DrawSpacship(DrawingContext context)
         {
+            /*
             double halfWidth = Settings.ShipSize / 2;
             double halfHeight = Settings.ShipSize / 2;
+            */
 
             ImageBrush spaceshipBg = new ImageBrush(new BitmapImage(new Uri(Settings.SpaceShipBackground, UriKind.Relative)));
             RectangleGeometry playerRectGeometry = (RectangleGeometry)gameModel.Player.Shape();
             Rect half = playerRectGeometry.Rect;
             context.DrawRectangle(spaceshipBg, null, half);
+        }
+
+        private void DrawPlayerLife(DrawingContext context, double newX , double newY)
+        {
+            ImageBrush playerLife = new ImageBrush(new BitmapImage(new Uri(Settings.PlayerLife, UriKind.Relative)));
+            RectangleGeometry playerRectGeometry = (RectangleGeometry)gameModel.Player.Shape();
+            Rect rect = playerRectGeometry.Rect;
+            rect.X = newX;
+            rect.Y = newY;
+            context.DrawRectangle(playerLife, null, rect);
         }
         public void Display(DrawingContext context)
         {
@@ -73,9 +85,27 @@ namespace Display.GameDisplay
 
             dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 10))));
 
+            
+
 
             context.DrawDrawing(dg);
             DrawSpacship(context);
+
+            // Player lifes
+            // position of the first Player life sprite.
+
+            for (int i = 0; i < gameModel.Player.HitPoint; i++)
+            {
+                if(i == 0)
+                    DrawPlayerLife(context, Settings.WindowWidth - 70, 10);
+                if(i == 1)
+                    DrawPlayerLife(context, Settings.WindowWidth - 50, 10);
+                if(i== 2)
+                {
+                    DrawPlayerLife(context, Settings.WindowWidth - 30, 10);
+                }
+            }
+
         }
 
         public Brush GetUfoColor(int point)

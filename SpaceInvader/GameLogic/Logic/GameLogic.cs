@@ -69,10 +69,11 @@ namespace GameLogic
         {
             projectile.TakeDamage();
             gameItem.TakeDamage();
-            if (projectile.SourceObject.GetType() == typeof(Player))
+            if (projectile.SourceObject.GetType() == typeof(Player) && gameItem.GetType() != typeof(Shield))
             {
                 this.model.Score += ((UFO)gameItem).Points;
             }
+
             this.DeathCheck(projectile, typeof(Projectile));
         }
 

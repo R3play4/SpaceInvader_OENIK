@@ -39,5 +39,6 @@ namespace GlobalSettings
 
         // Sprites
         public static string SpaceShipBackground = "SpaceShip.jpg";
+        public static string PlayerLife = "Heart.png";
     }
 }
