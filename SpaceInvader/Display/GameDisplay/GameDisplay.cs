@@ -63,6 +63,17 @@ namespace Display.GameDisplay
                 dg.Children.Add(new GeometryDrawing(Settings.ProjectileColor, new Pen(Settings.ProjectileColor, 1), projectile.Shape()));
             }
 
+            // Scores
+            FormattedText text = new FormattedText(gameModel.Score.ToString(),
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                new Typeface("Comic-Sans"),
+                15,
+                Brushes.White);
+
+            dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 10))));
+
+
             context.DrawDrawing(dg);
             DrawSpacship(context);
         }
