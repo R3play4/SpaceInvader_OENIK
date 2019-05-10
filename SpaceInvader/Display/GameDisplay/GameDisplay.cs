@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using GlobalSettings;
+using System.Windows.Media.Imaging;
 
 namespace Display.GameDisplay
 {
@@ -19,6 +20,16 @@ namespace Display.GameDisplay
             this.gameModel = gameModel;
         }
 
+        private void DrawSpacship(DrawingContext context)
+        {
+            double halfWidth = Settings.ShipSize / 2;
+            double halfHeight = Settings.ShipSize / 2;
+
+            ImageBrush spaceshipBg = new ImageBrush(new BitmapImage(new Uri(Settings.SpaceShipBackground, UriKind.Relative)));
+            RectangleGeometry playerRectGeometry = (RectangleGeometry)gameModel.Player.Shape();
+            Rect half = playerRectGeometry.Rect;
+            context.DrawRectangle(spaceshipBg, null, half);
+        }
         public void Display(DrawingContext context)
         {
             DrawingGroup dg = new DrawingGroup();
@@ -31,8 +42,8 @@ namespace Display.GameDisplay
                 ));
 
             // Playership
-            dg.Children.Add(new GeometryDrawing(Settings.ShipColor, new Pen(Settings.ShipFrameColor, 1),                
-                this.gameModel.Player.Shape()));
+            //dg.Children.Add(new GeometryDrawing(Settings.ShipColor, new Pen(Settings.ShipFrameColor, 1),
+            //    this.gameModel.Player.Shape()));
 
             // Ufo-s
             foreach (UFO ufo in gameModel.UFOs)
@@ -53,6 +64,7 @@ namespace Display.GameDisplay
             }
 
             context.DrawDrawing(dg);
+            DrawSpacship(context);
         }
 
         public Brush GetUfoColor(int point)
