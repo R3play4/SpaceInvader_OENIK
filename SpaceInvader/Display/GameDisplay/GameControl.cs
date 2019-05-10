@@ -30,7 +30,9 @@ namespace Display.GameDisplay
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             gameRepo = new GameRepository();
-            gameModel = this.gameRepo.LoadGameState(@"default.xml");
+
+            // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
+            gameModel = this.gameRepo.LoadGameState("default.xml");
             gameLogic = new GameLogic.GameLogic(gameModel);
             gameDisplay = new GameDisplay(gameModel);
 
@@ -61,7 +63,7 @@ namespace Display.GameDisplay
             {
                 for (int j = this.gameLogic.model.Shields.Count - 1; j >= 0; j--)
                 {
-                    if (this.gameLogic.model.Projectiles.Count > i &&
+                    if (this.gameLogic.model.Projectiles.Count > i && // Lehet mindig igaz ? 
                         this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]))
                     {
                         this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]);
