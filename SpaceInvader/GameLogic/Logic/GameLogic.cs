@@ -137,6 +137,18 @@ namespace GameLogic
             }
         }
 
+        public void PlayerMove(bool? direction)
+        {
+            if (direction == true && (model.Player.X + Settings.ShipSize + Settings.PlayerStepSize) < Settings.WindowWidth)
+            {
+                this.model.Player.Move(Settings.PlayerStepSize);
+            }
+            else if (direction == false && (model.Player.X - Settings.PlayerStepSize) > 0)
+            {
+                this.model.Player.Move(Settings.PlayerStepSize * -1);
+            }
+        }
+
         /// <summary>
         /// Loads a desired state of the GameModel, that was saved earlier.
         /// </summary>
@@ -144,18 +156,6 @@ namespace GameLogic
         public void LoadGame(string fileName)
         {
             this.model = this.repository.LoadGameState(fileName);
-        }
-
-        /// <summary>
-        /// Handles player movement.
-        /// </summary>
-        /// <param name="movement">true = right, false = left</param>
-        public void PlayerMove(double movement)
-        {
-            if ((model.Player.X + movement) < 0 || (model.Player.X + Settings.ShipSize + movement) >= Settings.WindowWidth) // Checks if the left or right side was reached.
-                movement = 0;
-
-            this.model.Player.Move(movement);
         }
 
         public void UfoMove()

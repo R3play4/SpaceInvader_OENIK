@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using ClassRepository;
@@ -21,6 +22,7 @@ namespace Display.GameDisplay
         GameRepository gameRepo;
         DispatcherTimer ufoTimer;
         DispatcherTimer projectileTimer;
+        bool? isMovingRight;
 
         public GameControl()
         {
@@ -42,6 +44,7 @@ namespace Display.GameDisplay
             if (win != null)
             {
                 win.KeyDown += Win_KeyDown;
+                win.KeyUp += Win_KeyUp;
 
                 ufoTimer = new DispatcherTimer();
                 ufoTimer.Interval = TimeSpan.FromMilliseconds(1000);
@@ -49,9 +52,18 @@ namespace Display.GameDisplay
                 ufoTimer.Start();
 
                 projectileTimer = new DispatcherTimer();
-                projectileTimer.Interval = TimeSpan.FromMilliseconds(25);
+                projectileTimer.Interval = TimeSpan.FromMilliseconds(1);
                 projectileTimer.Tick += ProjectileTimer_Tick;
                 projectileTimer.Start();
+            }
+        }
+
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((e.Key == Key.Left && this.isMovingRight == false) ||
+                 e.Key == Key.Right && this.isMovingRight == true)
+            {
+                this.isMovingRight = null;
             }
         }
 
@@ -95,6 +107,7 @@ namespace Display.GameDisplay
                 }
             }
 
+            this.gameLogic.PlayerMove(this.isMovingRight);
             this.gameLogic.CleanupOffscreenProjectiles();
             InvalidateVisual();
         }
@@ -108,19 +121,19 @@ namespace Display.GameDisplay
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Left)
-            {
-                this.gameLogic.PlayerMove(-5);
-            }
-            else if (e.Key == System.Windows.Input.Key.Right)
-            {
-                this.gameLogic.PlayerMove(5);
-            }
-            else if (e.Key == System.Windows.Input.Key.Space)
+            if (e.Key == System.Windows.Input.Key.Space)
             {
                 this.gameLogic.PlayerShoot();
             }
-            InvalidateVisual();
+            else if (e.Key == System.Windows.Input.Key.Left)
+            {
+                this.isMovingRight = false;
+            }
+            else if (e.Key == System.Windows.Input.Key.Right)
+            {
+                this.isMovingRight = true;
+            }
+            //InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)

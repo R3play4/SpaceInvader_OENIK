@@ -22,6 +22,7 @@ namespace GlobalSettings
         public static Brush ShipColor = Brushes.White;
         public static Brush ShipFrameColor = Brushes.Green;
         public const int ShipSize = 50; // 15
+        public const int PlayerStepSize = 5;
 
         // UFO
         public static Brush UFO1Color = Brushes.Orange;
