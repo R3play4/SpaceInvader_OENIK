@@ -394,6 +394,24 @@
       <R>20</R>
       <HitPoint>4</HitPoint>
     </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>130</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>210</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>290</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
   </Shields>
   <Player>
     <Y>450</Y>
