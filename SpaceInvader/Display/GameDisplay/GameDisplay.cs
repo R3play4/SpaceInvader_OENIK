@@ -78,7 +78,7 @@ namespace Display.GameDisplay
 
             // Background
             dg.Children.Add(new GeometryDrawing(Settings.BackgroundColor, new Pen(Settings.FrameColor, Settings.FrameSize),
-                new RectangleGeometry(new Rect(0, 0, Settings.WindowWidth - Settings.FrameSize * 4, Settings.WindowHeight - 32 - Settings.FrameSize * 2))
+                new RectangleGeometry(new Rect(0, 0, Settings.WindowWidth - Settings.FrameSize * 4, Settings.WindowHeight - Settings.FrameSize * 2))
                 ));
 
             // Playership

@@ -22,6 +22,7 @@ namespace GlobalSettings
         public static Brush ShipColor = Brushes.White;
         public static Brush ShipFrameColor = Brushes.Green;
         public const int ShipSize = 50; // 15
+        public const int PlayerStepSize = 3;
 
         // UFO
         public static Brush UFO1Color = Brushes.Orange;
@@ -35,7 +36,7 @@ namespace GlobalSettings
         public const int ShieldHeight = 15;
 
         // Projectile
-        public static Brush ProjectileColor = Brushes.Orange;
+        public static Brush ProjectileColor = Brushes.White;
         public const int ProjectileLength = 6;
         public const int ProjectileWidth = 2;
 
