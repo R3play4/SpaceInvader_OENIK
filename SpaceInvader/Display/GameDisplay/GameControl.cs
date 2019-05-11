@@ -32,7 +32,7 @@ namespace Display.GameDisplay
             gameRepo = new GameRepository();
 
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
-            gameModel = this.gameRepo.LoadGameState("default.xml");
+            gameModel = this.gameRepo.LoadGameState("..\\..\\DefaultGameState\\default.xml");
             gameLogic = new GameLogic.GameLogic(gameModel);
             gameDisplay = new GameDisplay(gameModel);
 
