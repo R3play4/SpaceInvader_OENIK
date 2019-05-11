@@ -160,10 +160,47 @@ namespace GameLogic
 
         public void UfoMove()
         {
+            //if (!IsSideMovingUFODisplayed())
+            //{
+            //    UFO sideMovingUFO = new UFO(20, 40, 100);
+            //    model.UFOs.Add(sideMovingUFO);
+            //}
             foreach (UFO ufo in this.model.UFOs)
             {
                 ufo.Move();
             }
+
+
+        }
+
+        public void UfoMoveSideways()
+        {
+            if (!IsSideMovingUFODisplayed())
+            {
+                UFO sideMovingUFO = new UFO(20, 40, 100);
+                model.UFOs.Add(sideMovingUFO);
+            }
+            else
+            {
+                foreach (UFO ufo in this.model.UFOs)
+                {
+                    if (ufo.Points == 100)
+                        ufo.MoveSideWays();
+                }
+            }
+        }
+
+        public bool IsSideMovingUFODisplayed()
+        {
+            // kell egy fix y amit viszgálni lehet
+            int i = 0;
+
+            while (i < model.UFOs.Count() && model.UFOs[i].Points != 100)
+                i++;
+
+            // true if displayed
+            return i < model.UFOs.Count();
+
         }
 
         /// <summary>

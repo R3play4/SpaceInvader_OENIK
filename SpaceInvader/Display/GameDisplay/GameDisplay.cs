@@ -163,6 +163,8 @@ namespace Display.GameDisplay
                     return Settings.UFO_2_Image;
                 case 40:
                     return Settings.UFO_3_Image;
+                case 100:
+                    return Settings.UFO_Side_Image;
                 default:
                     return null;
             }

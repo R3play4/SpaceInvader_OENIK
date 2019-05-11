@@ -20,6 +20,7 @@ namespace Display.GameDisplay
         GameDisplay gameDisplay;
         GameRepository gameRepo;
         DispatcherTimer ufoTimer;
+        DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
 
         public GameControl()
@@ -47,6 +48,11 @@ namespace Display.GameDisplay
                 ufoTimer.Interval = TimeSpan.FromMilliseconds(1000);
                 ufoTimer.Tick += UfoTimer_Tick;
                 ufoTimer.Start();
+
+                sidewayUfoTimer = new DispatcherTimer();
+                sidewayUfoTimer.Interval = TimeSpan.FromMilliseconds(500);
+                sidewayUfoTimer.Tick += SideWayUFOTimer_Tick;
+                sidewayUfoTimer.Start();
 
                 projectileTimer = new DispatcherTimer();
                 projectileTimer.Interval = TimeSpan.FromMilliseconds(25);
@@ -103,8 +109,18 @@ namespace Display.GameDisplay
         {
             this.gameLogic.UfoMove();
             this.gameLogic.UfoShoot();
+            //this.gameLogic.UfoMoveSideways();
+
             InvalidateVisual();
         }
+
+        private void SideWayUFOTimer_Tick(object sender, EventArgs e)
+        {
+            gameLogic.UfoMoveSideways();
+            this.gameLogic.UfoShoot();
+            InvalidateVisual();
+        }
+
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

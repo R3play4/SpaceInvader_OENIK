@@ -45,6 +45,7 @@ namespace GlobalSettings
         public static string UFO_1 = "..\\..\\Images\\UFO1.png";
         public static string UFO_2 = "..\\..\\Images\\UFO2.png";
         public static string UFO_3 = "..\\..\\Images\\UFO3.png";
+        public static string UFO_Side = "..\\..\\Images\\UFO_Side.png";
         public static string Shield_1 = "..\\..\\Images\\Shield_1.png";
         public static string Shield_2 = "..\\..\\Images\\Shield_2.png";
         public static string Shield_3 = "..\\..\\Images\\Shield_3.png";
@@ -54,6 +55,7 @@ namespace GlobalSettings
         public static ImageBrush UFO_1_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_1, UriKind.Relative)));
         public static ImageBrush UFO_2_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_2, UriKind.Relative)));
         public static ImageBrush UFO_3_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_3, UriKind.Relative)));
+        public static ImageBrush UFO_Side_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_Side, UriKind.Relative)));
 
         public static ImageBrush Shield_1_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_1, UriKind.Relative)));
         public static ImageBrush Shield_2_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_2, UriKind.Relative)));

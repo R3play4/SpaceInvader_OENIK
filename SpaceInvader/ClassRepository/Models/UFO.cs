@@ -49,6 +49,12 @@ namespace ClassRepository
             }
         }
 
+        // Moves right
+        public void MoveSideWays()
+        {
+            this.X += 10;
+        }
+
         public override Geometry Shape()
         {
             return new RectangleGeometry(new Rect(this.X, this.Y, Settings.UfoShipSize, Settings.UfoShipSize));
