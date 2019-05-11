@@ -118,7 +118,15 @@
     <Resource Include="DefaultGameState\default.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\SpaceShip.jpg" />
+    <Resource Include="Images\Heart.png" />
+    <Resource Include="Images\Shield_1.png" />
+    <Resource Include="Images\Shield_2.png" />
+    <Resource Include="Images\Shield_3.png" />
+    <Resource Include="Images\Shield_4.png" />
+    <Resource Include="Images\SpaceShip.png" />
+    <Resource Include="Images\UFO1.png" />
+    <Resource Include="Images\UFO2.png" />
+    <Resource Include="Images\UFO3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

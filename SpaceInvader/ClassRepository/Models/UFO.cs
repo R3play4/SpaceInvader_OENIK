@@ -51,12 +51,12 @@ namespace ClassRepository
 
         public override Geometry Shape()
         {
-            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ShipSize, Settings.ShipSize));
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.UfoShipSize, Settings.UfoShipSize));
         }
 
         public Projectile Shoot()
         {
-            return new Projectile(this.X + (Settings.ShipSize/2), this.Y + this.R, false, this);
+            return new Projectile(this.X + (Settings.UfoShipSize/2), this.Y + this.R, false, this);
         }
 
         private void MoveDown() => this.Y += 10;
