@@ -10,7 +10,7 @@ using System.Windows.Threading;
 using ClassRepository;
 using ClassRepository.Repository;
 using GameLogic;
-
+using Microsoft.Win32;
 
 namespace Display.GameDisplay
 {
@@ -67,6 +67,7 @@ namespace Display.GameDisplay
                 projectileTimer.Interval = TimeSpan.FromMilliseconds(1);
                 projectileTimer.Tick += ProjectileTimer_Tick;
                 projectileTimer.Start();
+                
             }
         }
 
@@ -154,6 +155,26 @@ namespace Display.GameDisplay
             {
                 this.isMovingRight = true;
             }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                projectileTimer.Stop();
+                ufoTimer.Stop();
+                sidewayUfoTimer.Stop();
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                string filepath = String.Empty;
+
+                if(sfd.ShowDialog() == true)
+                {
+                    filepath = sfd.FileName;
+                }
+                this.gameRepo.SaveGameState(filepath, this.gameModel);
+
+                projectileTimer.Start();
+                ufoTimer.Start();
+                sidewayUfoTimer.Start();
+            }
+
             //InvalidateVisual();
         }
 
