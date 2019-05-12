@@ -30,6 +30,7 @@ namespace GlobalSettings
         public static Brush UFO3Color = Brushes.LightBlue;
         public const int UfoShipSize = 15; // 15
         public const double UfoSideStepSize = 5;
+        public const double StandardUfoStepSize = 5;
 
         // Shield
         public static Brush ShieldColor = Brushes.Green;

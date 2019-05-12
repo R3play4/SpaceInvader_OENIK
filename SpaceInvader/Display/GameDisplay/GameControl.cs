@@ -24,6 +24,7 @@ namespace Display.GameDisplay
         DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
         bool? isMovingRight;
+
         //MainMenuWindow mainMenuWindow = new MainMenuWindow();
         //MainWindow window = new MainWindow();
 
@@ -54,7 +55,7 @@ namespace Display.GameDisplay
                 win.KeyUp += Win_KeyUp;
 
                 ufoTimer = new DispatcherTimer();
-                ufoTimer.Interval = TimeSpan.FromMilliseconds(1000);
+                ufoTimer.Interval = TimeSpan.FromMilliseconds(this.gameLogic.UfoTimerTick);
                 ufoTimer.Tick += UfoTimer_Tick;
                 ufoTimer.Start();
 
@@ -120,6 +121,10 @@ namespace Display.GameDisplay
                 }
             }
 
+            if (this.gameLogic.CheckIfLevelCleared())
+            {
+                ufoTimer.Interval = TimeSpan.FromMilliseconds(this.gameLogic.UfoTimerTick);
+            }
             this.gameLogic.PlayerMove(this.isMovingRight);
             this.gameLogic.CleanupOffscreenProjectiles();
             InvalidateVisual();
@@ -137,7 +142,6 @@ namespace Display.GameDisplay
         private void SideWayUFOTimer_Tick(object sender, EventArgs e)
         {
             gameLogic.UfoMoveSideways();
-            this.gameLogic.UfoShoot();
             InvalidateVisual();
         }
 

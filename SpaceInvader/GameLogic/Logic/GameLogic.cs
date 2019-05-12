@@ -30,6 +30,8 @@ namespace GameLogic
 
         private bool ufoMovingRight; // true = right, false = left
 
+        public double UfoTimerTick { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -38,6 +40,7 @@ namespace GameLogic
         {
             this.model = model;
             this.repository = new GameRepository();
+            this.UfoTimerTick = 1000;
         }
 
         /// <summary>
@@ -149,6 +152,25 @@ namespace GameLogic
             {
                 this.model.Player.Move(Settings.PlayerStepSize * -1);
             }
+        }
+
+        public bool CheckIfLevelCleared()
+        {
+            if (this.model.UFOs.Count == 0)
+            {
+                GameModel tempModel = this.repository.LoadGameState(@"default.xml");
+                this.model.UFOs = tempModel.UFOs;
+                this.model.Projectiles = new List<Projectile>();
+                this.UfoTimerTick *= 0.8;
+                if (this.model.Player.HitPoint < 6)
+                {
+                    this.model.Player.HitPoint++;
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
