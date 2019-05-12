@@ -52,6 +52,7 @@ namespace GlobalSettings
         public static string Shield_2 = "..\\..\\Images\\Shield_2.png";
         public static string Shield_3 = "..\\..\\Images\\Shield_3.png";
         public static string Shield_4 = "..\\..\\Images\\Shield_4.png";
+        public static string MainMenuBackground = "..\\..\\Images\\MainMenuBG.png";
 
         // Brushes
         public static ImageBrush UFO_1_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_1, UriKind.Relative)));

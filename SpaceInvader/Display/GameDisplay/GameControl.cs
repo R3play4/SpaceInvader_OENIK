@@ -32,12 +32,19 @@ namespace Display.GameDisplay
 
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
+            MainMenuWindow winM = new MainMenuWindow();
+            winM.ShowDialog();
+
+            //string gameStateXML = 
+
             gameRepo = new GameRepository();
 
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
             gameModel = this.gameRepo.LoadGameState("..\\..\\DefaultGameState\\default.xml");
             gameLogic = new GameLogic.GameLogic(gameModel);
             gameDisplay = new GameDisplay(gameModel);
+
+            
 
             Window win = Window.GetWindow(this);
             InvalidateVisual();

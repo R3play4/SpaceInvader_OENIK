@@ -48,6 +48,13 @@ namespace Display.GameDisplay
             context.DrawRectangle(playerLife, null, rect);
         }
 
+        private void DrawMainMenuWindow()
+        {
+            Window mainMenu = new Window();
+            mainMenu.ShowDialog();
+
+        }
+
         private void DrawUFO(DrawingContext context)
         {
             //ImageBrush ufo_1 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_1, UriKind.Relative)));
