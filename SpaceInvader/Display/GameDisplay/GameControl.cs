@@ -24,26 +24,25 @@ namespace Display.GameDisplay
         DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
         bool? isMovingRight;
+        //MainMenuWindow mainMenuWindow = new MainMenuWindow();
+        //MainWindow window = new MainWindow();
 
+        public string MyProperty { get; set; }
         public GameControl()
         {
+            
             Loaded += GameControl_Loaded;
         }
 
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
-            MainMenuWindow winM = new MainMenuWindow();
-            winM.ShowDialog();
-
-            //string gameStateXML = 
+            //mainMenuWindow.ShowDialog();
 
             gameRepo = new GameRepository();
-
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
-            gameModel = this.gameRepo.LoadGameState("..\\..\\DefaultGameState\\default.xml");
+            gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
             gameLogic = new GameLogic.GameLogic(gameModel);
             gameDisplay = new GameDisplay(gameModel);
-
             
 
             Window win = Window.GetWindow(this);
@@ -140,7 +139,6 @@ namespace Display.GameDisplay
             this.gameLogic.UfoShoot();
             InvalidateVisual();
         }
-
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

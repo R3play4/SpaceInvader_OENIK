@@ -64,5 +64,9 @@ namespace GlobalSettings
         public static ImageBrush Shield_2_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_2, UriKind.Relative)));
         public static ImageBrush Shield_3_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_3, UriKind.Relative)));
         public static ImageBrush Shield_4_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_4, UriKind.Relative)));
+
+        // New Game State
+        public static string GameStateXML = "..\\..\\DefaultGameState\\default.xml";
+
     }
 }

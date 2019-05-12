@@ -120,9 +120,6 @@ namespace Display.GameDisplay
 
             dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 5))));
 
-            
-
-
             context.DrawDrawing(dg);
             DrawSpacship(context);
             DrawUFO(context);

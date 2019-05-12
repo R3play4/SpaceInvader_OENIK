@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ClassRepository;
+using ClassRepository.Repository;
+using Display.GameDisplay;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,15 +23,34 @@ namespace Display
     /// </summary>
     public partial class MainMenuWindow : Window
     {
+
         public MainMenuWindow()
         {
             InitializeComponent();
-            //public static ImageBrush UFO_3_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_3, UriKind.Relative)));
-            //this.Background = new ImageBrush(new BitmapImage(new Uri(GlobalSettings.Settings.MainMenuBackground, UriKind.Relative)));
         }
         private void newGameBTN_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow window = new MainWindow();
+            window.ShowDialog();
+        }
 
+        private void LoadGameBTN_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if(ofd.ShowDialog() == true)
+            {
+                GlobalSettings.Settings.GameStateXML = ofd.FileName;
+            }
+
+            MainWindow window = new MainWindow();
+            window.ShowDialog();
+
+        }
+
+        private void ExitBTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

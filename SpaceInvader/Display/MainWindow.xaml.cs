@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ClassRepository;
+using ClassRepository.Repository;
+using Display.GameDisplay;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +23,15 @@ namespace Display
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Property needed
+        //public GameRepository repository;
+        //public GameModel model;
         public MainWindow()
         {
+            //MainMenuWindow mainMenu = new MainMenuWindow();
+            //mainMenu.ShowDialog();
+            //this.repository = new GameRepository();
+            //this.model = this.repository.LoadGameState(GlobalSettings.Settings.GameStateXML);
             InitializeComponent();
         }
     }
