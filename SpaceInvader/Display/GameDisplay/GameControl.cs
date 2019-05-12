@@ -53,7 +53,7 @@ namespace Display.GameDisplay
                 ufoTimer.Start();
 
                 sidewayUfoTimer = new DispatcherTimer();
-                sidewayUfoTimer.Interval = TimeSpan.FromMilliseconds(500);
+                sidewayUfoTimer.Interval = TimeSpan.FromMilliseconds(100);
                 sidewayUfoTimer.Tick += SideWayUFOTimer_Tick;
                 sidewayUfoTimer.Start();
 

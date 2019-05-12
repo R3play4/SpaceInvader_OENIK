@@ -28,6 +28,8 @@ namespace GameLogic
 
         private Random r = new Random();
 
+        private bool ufoMovingRight; // true = right, false = left
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -160,39 +162,59 @@ namespace GameLogic
 
         public void UfoMove()
         {
-            //if (!IsSideMovingUFODisplayed())
-            //{
-            //    UFO sideMovingUFO = new UFO(20, 40, 100);
-            //    model.UFOs.Add(sideMovingUFO);
-            //}
             foreach (UFO ufo in this.model.UFOs)
             {
                 ufo.Move();
             }
-
-
         }
 
         public void UfoMoveSideways()
         {
-            if (!IsSideMovingUFODisplayed())
+
+            if (!IsSideMovingUFODisplayed()) // Checks if there's a sidemoving UFO already
             {
-                UFO sideMovingUFO = new UFO(20, 40, 100);
-                model.UFOs.Add(sideMovingUFO);
+                // 20% chance that a sidemoving UFO will appear
+                if (this.r.Next(1,100) > 90)
+                {
+                    // 50% chance of moving left or right.
+                    if(this.r.Next(1,100) > 50)
+                    {
+                        UFO sideMovingUFO = new UFO(20, 25, 100);
+                        this.ufoMovingRight = true;
+                        model.UFOs.Add(sideMovingUFO);
+                    }
+                    else
+                    {
+                        UFO sideMovingUFO = new UFO((int)(Settings.WindowWidth - 20), 25, 100);
+                        this.ufoMovingRight = false;
+                        model.UFOs.Add(sideMovingUFO);
+                    }
+                }
             }
             else
             {
-                foreach (UFO ufo in this.model.UFOs)
+                // There is already a moving UFO. Loops through all the UFO's and moves the one with 100 points sideways.
+                for (int i = 0; i < this.model.UFOs.Count(); i++)
                 {
-                    if (ufo.Points == 100)
-                        ufo.MoveSideWays();
+                    UFO actualUFO = model.UFOs[i];
+
+                    if (actualUFO.Points == 100 && ufoMovingRight == true)
+                    {
+                        actualUFO.MoveSideWays(Settings.UfoSideStepSize);
+                    }
+                    else if (actualUFO.Points == 100 && ufoMovingRight == false)
+                    {
+                        actualUFO.MoveSideWays(Settings.UfoSideStepSize * -1);
+                    }
+
+                    if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)
+                        model.UFOs.Remove(actualUFO);
                 }
             }
         }
 
         public bool IsSideMovingUFODisplayed()
         {
-            // kell egy fix y amit viszgálni lehet
             int i = 0;
 
             while (i < model.UFOs.Count() && model.UFOs[i].Points != 100)

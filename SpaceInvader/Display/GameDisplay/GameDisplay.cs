@@ -111,7 +111,7 @@ namespace Display.GameDisplay
                 15,
                 Brushes.White);
 
-            dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 10))));
+            dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 5))));
 
             
 
@@ -127,12 +127,12 @@ namespace Display.GameDisplay
             for (int i = 0; i < gameModel.Player.HitPoint; i++)
             {
                 if(i == 0)
-                    DrawPlayerLife(context, Settings.WindowWidth - 70, 10);
+                    DrawPlayerLife(context, Settings.WindowWidth - 70, 5);
                 if(i == 1)
-                    DrawPlayerLife(context, Settings.WindowWidth - 50, 10);
+                    DrawPlayerLife(context, Settings.WindowWidth - 50, 5);
                 if(i== 2)
                 {
-                    DrawPlayerLife(context, Settings.WindowWidth - 30, 10);
+                    DrawPlayerLife(context, Settings.WindowWidth - 30, 5);
                 }
             }
 

@@ -50,9 +50,9 @@ namespace ClassRepository
         }
 
         // Moves right
-        public void MoveSideWays()
+        public void MoveSideWays(double diff)
         {
-            this.X += 10;
+            this.X += diff;
         }
 
         public override Geometry Shape()
