@@ -28,9 +28,9 @@ namespace Display.GameDisplay
         //MainWindow window = new MainWindow();
 
         //public string MyProperty { get; set; }
-        public GameControl(GameLogic.GameLogic logic = null)
+        public GameControl()
         {
-            this.gameLogic = logic;
+            //this.gameLogic = logic;
             //this.GameControl_Loaded();
             Loaded += GameControl_Loaded;
         }
