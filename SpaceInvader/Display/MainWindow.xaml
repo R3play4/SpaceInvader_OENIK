@@ -11,5 +11,5 @@
         Width="{x:Static local:Settings.WindowWidth}"> -->
     <controls:GameControl Height="{x:Static local:Settings.WindowHeight}"
                           Width="{x:Static local:Settings.WindowWidth}">
-    </controls:GameControl> 
+    </controls:GameControl>
 </Window>
