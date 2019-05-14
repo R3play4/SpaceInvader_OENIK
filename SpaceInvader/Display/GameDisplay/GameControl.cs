@@ -43,8 +43,9 @@ namespace Display.GameDisplay
             //gameRepo = new GameRepository();
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
             //gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
-            gameLogic = new GameLogic.GameLogic(GlobalSettings.Settings.GameStateXML);
+            gameLogic = ((MainMenuWindow)Application.Current.MainWindow).Logic;
             gameDisplay = new GameDisplay(this.gameLogic.Model);
+            //((MainMenuWindow)Application.Current.MainWindow).Logic
             
 
             Window win = Window.GetWindow(this);
@@ -169,7 +170,11 @@ namespace Display.GameDisplay
             }
             else if (e.Key == Key.Escape)
             {
-                this.gameLogic.GameStateSwitch();        
+                this.gameLogic.GameStateSwitch();
+                PauseWindow window = new PauseWindow(this.gameLogic);
+                window.ShowDialog();
+                this.isMovingRight = null;
+                this.gameLogic.GameStateSwitch();
 
                 //SaveFileDialog sfd = new SaveFileDialog();
 

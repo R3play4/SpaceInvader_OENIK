@@ -419,6 +419,6 @@
     <R>10</R>
     <HitPoint>3</HitPoint>
   </Player>
-  <GameState>Paused</GameState>
+  <GameState>Running</GameState>
   <Score>0</Score>
 </GameModel>

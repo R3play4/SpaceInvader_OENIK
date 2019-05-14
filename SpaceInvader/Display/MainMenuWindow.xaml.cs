@@ -1,6 +1,7 @@
 ﻿using ClassRepository;
 using ClassRepository.Repository;
 using Display.GameDisplay;
+using GlobalSettings;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Display
     /// </summary>
     public partial class MainMenuWindow : Window
     {
+        public GameLogic.GameLogic Logic { get; set; }
 
         public MainMenuWindow()
         {
@@ -30,6 +32,7 @@ namespace Display
         }
         private void newGameBTN_Click(object sender, RoutedEventArgs e)
         {
+            this.Logic = new GameLogic.GameLogic(Settings.GameStateXML);
             MainWindow window = new MainWindow();
             window.ShowDialog();
         }
@@ -40,7 +43,8 @@ namespace Display
 
             if(ofd.ShowDialog() == true)
             {
-                GlobalSettings.Settings.GameStateXML = ofd.FileName;
+                this.Logic = new GameLogic.GameLogic(ofd.FileName);
+                //GlobalSettings.Settings.GameStateXML = ofd.FileName;
             }
 
             MainWindow window = new MainWindow();
