@@ -19,9 +19,12 @@ namespace Display
     /// </summary>
     public partial class PauseWindow : Window
     {
-        public PauseWindow()
+        GameLogic.GameLogic logic;
+
+        public PauseWindow(GameLogic.GameLogic logic)
         {
             InitializeComponent();
+            this.logic = logic;
         }
     }
 }

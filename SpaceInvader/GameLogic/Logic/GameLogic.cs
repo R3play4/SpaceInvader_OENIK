@@ -36,10 +36,17 @@ namespace GameLogic
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
         /// <param name="model">Game model.</param>
-        public GameLogic(IGameModel model)
+        public GameLogic(string filePath)
         {
-            this.model = model;
             this.repository = new GameRepository();
+            this.model = this.repository.LoadGameState(filePath);
+            this.UfoTimerTick = 1000;
+        }
+
+        public GameLogic()
+        {
+            this.repository = new GameRepository();
+            this.model = null;
             this.UfoTimerTick = 1000;
         }
 

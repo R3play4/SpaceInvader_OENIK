@@ -8,14 +8,15 @@ using System.Windows;
 using System.Windows.Media;
 using GlobalSettings;
 using System.Windows.Media.Imaging;
+using ClassRepository.Model;
 
 namespace Display.GameDisplay
 {
     public class GameDisplay
     {
-        GameModel gameModel;
+        IGameModel gameModel;
 
-        public GameDisplay(GameModel gameModel)
+        public GameDisplay(IGameModel gameModel)
         {
             this.gameModel = gameModel;
         }

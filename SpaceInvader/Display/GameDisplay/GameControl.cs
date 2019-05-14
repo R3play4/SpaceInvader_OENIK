@@ -10,6 +10,7 @@ using System.Windows.Threading;
 using ClassRepository;
 using ClassRepository.Repository;
 using GameLogic;
+using GameLogic.Interface;
 using Microsoft.Win32;
 
 namespace Display.GameDisplay
@@ -17,9 +18,7 @@ namespace Display.GameDisplay
     public class GameControl : FrameworkElement
     {
         GameLogic.GameLogic gameLogic;
-        GameModel gameModel;
         GameDisplay gameDisplay;
-        GameRepository gameRepo;
         DispatcherTimer ufoTimer;
         DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
@@ -30,8 +29,7 @@ namespace Display.GameDisplay
 
         public string MyProperty { get; set; }
         public GameControl()
-        {
-            
+        {            
             Loaded += GameControl_Loaded;
         }
 
@@ -39,11 +37,11 @@ namespace Display.GameDisplay
         {
             //mainMenuWindow.ShowDialog();
 
-            gameRepo = new GameRepository();
+            //gameRepo = new GameRepository();
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
-            gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
-            gameLogic = new GameLogic.GameLogic(gameModel);
-            gameDisplay = new GameDisplay(gameModel);
+            //gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
+            gameLogic = new GameLogic.GameLogic(GlobalSettings.Settings.GameStateXML);
+            gameDisplay = new GameDisplay(this.gameLogic.model);
             
 
             Window win = Window.GetWindow(this);
@@ -83,102 +81,108 @@ namespace Display.GameDisplay
 
         private void ProjectileTimer_Tick(object sender, EventArgs e)
         {
-            this.gameLogic.ProjectileMove();
-
-            for (int i = this.gameLogic.model.Projectiles.Count - 1; i >= 0; i--)
+            while (this.gameLogic.model.GameState == GameState.Running)
             {
-                for (int j = this.gameLogic.model.Shields.Count - 1; j >= 0; j--)
-                {
-                    if (this.gameLogic.model.Projectiles.Count > i && // Lehet mindig igaz ? 
-                        this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]))
-                    {
-                        this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]);
-                        this.gameLogic.DeathCheck(this.gameLogic.model.Shields[j], typeof(Shield));
-                    }
-                }
+                this.gameLogic.ProjectileMove();
 
-                if (this.gameLogic.model.Projectiles.Count > i &&
-                    this.gameLogic.model.Projectiles[i].SourceObject.GetType() == typeof(Player))
+                for (int i = this.gameLogic.model.Projectiles.Count - 1; i >= 0; i--)
                 {
-                    for (int k = this.gameLogic.model.UFOs.Count - 1; k >= 0; k--)
+                    for (int j = this.gameLogic.model.Shields.Count - 1; j >= 0; j--)
                     {
                         if (this.gameLogic.model.Projectiles.Count > i &&
-                            this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]))
+                            this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]))
                         {
-                            this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]);
-                            this.gameLogic.DeathCheck(this.gameLogic.model.UFOs[k], typeof(UFO));
+                            this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Shields[j]);
+                            this.gameLogic.DeathCheck(this.gameLogic.model.Shields[j], typeof(Shield));
+                        }
+                    }
+
+                    if (this.gameLogic.model.Projectiles.Count > i &&
+                        this.gameLogic.model.Projectiles[i].SourceObject.GetType() == typeof(Player))
+                    {
+                        for (int k = this.gameLogic.model.UFOs.Count - 1; k >= 0; k--)
+                        {
+                            if (this.gameLogic.model.Projectiles.Count > i &&
+                                this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]))
+                            {
+                                this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.UFOs[k]);
+                                this.gameLogic.DeathCheck(this.gameLogic.model.UFOs[k], typeof(UFO));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (this.gameLogic.model.Projectiles.Count > i &&
+                            this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player))
+                        {
+                            this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player);
+                            this.gameLogic.DeathCheck(this.gameLogic.model.Player, typeof(Player));
                         }
                     }
                 }
-                else
-                {
-                    if (this.gameLogic.model.Projectiles.Count > i &&
-                        this.gameLogic.CollisionCheck(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player))
-                    {
-                        this.gameLogic.HandleCollision(this.gameLogic.model.Projectiles[i], this.gameLogic.model.Player);
-                        this.gameLogic.DeathCheck(this.gameLogic.model.Player, typeof(Player));
-                    }
-                }
-            }
 
-            if (this.gameLogic.CheckIfLevelCleared())
-            {
-                ufoTimer.Interval = TimeSpan.FromMilliseconds(this.gameLogic.UfoTimerTick);
-            }
-            this.gameLogic.PlayerMove(this.isMovingRight);
-            this.gameLogic.CleanupOffscreenProjectiles();
-            InvalidateVisual();
+                if (this.gameLogic.CheckIfLevelCleared())
+                {
+                    ufoTimer.Interval = TimeSpan.FromMilliseconds(this.gameLogic.UfoTimerTick);
+                }
+                this.gameLogic.PlayerMove(this.isMovingRight);
+                this.gameLogic.CleanupOffscreenProjectiles();
+                InvalidateVisual();
+            }            
         }
 
         private void UfoTimer_Tick(object sender, EventArgs e)
         {
-            this.gameLogic.UfoMove();
-            this.gameLogic.UfoShoot();
-            //this.gameLogic.UfoMoveSideways();
-
-            InvalidateVisual();
+            while (this.gameLogic.model.GameState == GameState.Running)
+            {
+                this.gameLogic.UfoMove();
+                this.gameLogic.UfoShoot();
+                InvalidateVisual();
+            }
         }
 
         private void SideWayUFOTimer_Tick(object sender, EventArgs e)
         {
-            gameLogic.UfoMoveSideways();
-            InvalidateVisual();
+            while (this.gameLogic.model.GameState == GameState.Running)
+            {
+                gameLogic.UfoMoveSideways();
+                InvalidateVisual();
+            }
         }
 
-        private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Win_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Space)
+            if (e.Key == Key.Space)
             {
                 this.gameLogic.PlayerShoot();
             }
-            else if (e.Key == System.Windows.Input.Key.Left)
+            else if (e.Key == Key.Left)
             {
                 this.isMovingRight = false;
             }
-            else if (e.Key == System.Windows.Input.Key.Right)
+            else if (e.Key == Key.Right)
             {
                 this.isMovingRight = true;
             }
-            else if (e.Key == System.Windows.Input.Key.Escape)
+            else if (e.Key == Key.Escape)
             {
+                this.gameLogic.GameStateSwitch(GameState.Paused);
                 projectileTimer.Stop();
                 ufoTimer.Stop();
                 sidewayUfoTimer.Stop();
 
                 SaveFileDialog sfd = new SaveFileDialog();
-                string filepath = String.Empty;
 
                 if(sfd.ShowDialog() == true)
                 {
-                    filepath = sfd.FileName;
+                    this.gameLogic.SaveGame(sfd.FileName);
                 }
-                this.gameRepo.SaveGameState(filepath, this.gameModel);
 
+                this.gameLogic.GameStateSwitch(GameState.Running);
                 projectileTimer.Start();
                 ufoTimer.Start();
                 sidewayUfoTimer.Start();
             }
-
             //InvalidateVisual();
         }
 

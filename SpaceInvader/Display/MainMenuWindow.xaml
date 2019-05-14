@@ -13,7 +13,7 @@
         <Button x:Name="newGameBTN" Content="New Game" HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" RenderTransformOrigin="0.504,7.732" Margin="314,250,314,0" Click="newGameBTN_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="0"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
@@ -21,7 +21,7 @@
         <Button x:Name="loadGameBTN" Content="Load Game" HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" RenderTransformOrigin="0.504,7.732" Margin="314,300,314,0" Click="LoadGameBTN_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="0"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
@@ -29,7 +29,7 @@
         <Button x:Name="exitBTN" Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Top" Width="164" Height="26" RenderTransformOrigin="0.504,7.732" Margin="314,350,314,0" Click="ExitBTN_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="0"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>

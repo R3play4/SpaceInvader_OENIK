@@ -18,11 +18,6 @@ namespace GameLogic.Interface
     public interface IGameLogic
     {
         /// <summary>
-        /// Gets or sets threads that will handle the different GameItems.
-        /// </summary>
-        Thread[] Threads { get; set; }
-
-        /// <summary>
         /// Handles player movement.
         /// </summary>
         /// <param name="isMovingRight">true = right, false = left</param>

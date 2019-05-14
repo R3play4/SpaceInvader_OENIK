@@ -119,9 +119,9 @@
       <Project>{96e5ece5-fa08-40c2-9139-4f58b05b1798}</Project>
       <Name>ClassRepository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
+    <ProjectReference Include="..\GameLogic\Logic.csproj">
       <Project>{281345e0-8a5e-4a7b-8e56-400c3befb44f}</Project>
-      <Name>GameLogic</Name>
+      <Name>Logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\GlobalSettings\GlobalSettings.csproj">
       <Project>{60598ef3-908c-4984-be29-903a2a1ad68f}</Project>
