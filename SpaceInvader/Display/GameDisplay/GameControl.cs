@@ -23,6 +23,7 @@ namespace Display.GameDisplay
         DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
         bool? isMovingRight;
+        bool canShoot;
 
         //MainMenuWindow mainMenuWindow = new MainMenuWindow();
         //MainWindow window = new MainWindow();
@@ -80,6 +81,10 @@ namespace Display.GameDisplay
                  e.Key == Key.Right && this.isMovingRight == true)
             {
                 this.isMovingRight = null;
+            }
+            else if (e.Key == Key.Space)
+            {
+                this.canShoot = true;
             }
         }
 
@@ -160,8 +165,9 @@ namespace Display.GameDisplay
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Space && this.canShoot)
             {
+                this.canShoot = false;
                 this.gameLogic.PlayerShoot();
             }
             else if (e.Key == Key.Left)
