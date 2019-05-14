@@ -170,11 +170,13 @@ namespace Display.GameDisplay
             }
             else if (e.Key == Key.Escape)
             {
-                this.gameLogic.GameStateSwitch();
+                this.gameLogic.GameStateSwitch(GameState.Paused);
                 PauseWindow window = new PauseWindow(this.gameLogic);
                 window.ShowDialog();
+                this.gameDisplay = new GameDisplay(this.gameLogic.Model);
                 this.isMovingRight = null;
-                this.gameLogic.GameStateSwitch();
+                this.gameLogic.GameStateSwitch(GameState.Running);
+                InvalidateVisual();
 
                 //SaveFileDialog sfd = new SaveFileDialog();
 

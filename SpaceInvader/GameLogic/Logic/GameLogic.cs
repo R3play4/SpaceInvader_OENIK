@@ -136,16 +136,9 @@ namespace GameLogic
         /// Changes Game State
         /// </summary>
         /// <param name="newState">new State</param>
-        public void GameStateSwitch()
+        public void GameStateSwitch(GameState newState)
         {
-            switch (this.Model.GameState)
-            {
-                default:
-                case GameState.Paused: this.Model.GameState = GameState.Running;
-                    break;
-                case GameState.Running: this.Model.GameState = GameState.Paused;
-                    break;
-            }
+            this.Model.GameState = newState;
         }
 
         public void UfoShoot()

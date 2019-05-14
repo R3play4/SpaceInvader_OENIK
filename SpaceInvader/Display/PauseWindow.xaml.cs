@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,38 @@ namespace Display
         {
             InitializeComponent();
             this.logic = logic;
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == true)
+            {                
+                this.logic.LoadGame(ofd.FileName);
+            }
+            this.DialogResult = true;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "XML Files | *.xml";
+            sfd.DefaultExt = "xml";
+            if (sfd.ShowDialog() == true)
+            {
+                this.logic.SaveGame(sfd.SafeFileName);
+            }
+            this.DialogResult = true;
+        }
+
+        private void ResumeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

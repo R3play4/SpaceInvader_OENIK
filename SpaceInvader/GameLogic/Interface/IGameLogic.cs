@@ -41,7 +41,7 @@ namespace GameLogic.Interface
         /// Changes Game State
         /// </summary>
         /// <param name="newState">new State</param>
-        void GameStateSwitch();
+        void GameStateSwitch(GameState newState);
 
         /// <summary>
         /// Checks if the GameState is finnished
