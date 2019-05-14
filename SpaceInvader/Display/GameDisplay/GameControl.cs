@@ -121,6 +121,10 @@ namespace Display.GameDisplay
                         {
                             this.gameLogic.HandleCollision(this.gameLogic.Model.Projectiles[i], this.gameLogic.Model.Player);
                             this.gameLogic.DeathCheck(this.gameLogic.Model.Player, typeof(Player));
+                            if (this.gameLogic.Model.GameState == GameState.Finished)
+                            {
+
+                            }
                         }
                     }
                 }
@@ -192,7 +196,14 @@ namespace Display.GameDisplay
         {
             if (gameDisplay != null)
             {
-                gameDisplay.Display(drawingContext);
+                if (this.gameLogic.Model.GameState == GameState.Finished)
+                {
+                    gameDisplay.DisplayGameOver(drawingContext);
+                }
+                else
+                {
+                    gameDisplay.Display(drawingContext);
+                }                
             }
         }
     }

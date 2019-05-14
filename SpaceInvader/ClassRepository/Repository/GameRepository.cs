@@ -24,7 +24,7 @@ namespace ClassRepository.Repository
         }
 
         public void SaveGameState(string filePath, GameModel currentState)
-        {
+         {
             StreamWriter writer = new StreamWriter(filePath);
             this.serializer.Serialize(writer, currentState);
             writer.Close();

@@ -36,6 +36,8 @@ namespace Display
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "XML Files | *.xml";
+            ofd.DefaultExt = "xml";
             if (ofd.ShowDialog() == true)
             {                
                 this.logic.LoadGame(ofd.FileName);

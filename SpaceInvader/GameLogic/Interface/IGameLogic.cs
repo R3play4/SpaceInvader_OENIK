@@ -47,7 +47,7 @@ namespace GameLogic.Interface
         /// Checks if the GameState is finnished
         /// </summary>
         /// <returns>true if the game GameState changed to Finnished </returns>
-        bool GameEnd();
+        bool CheckGameEnd();
 
         /// <summary>
         /// Saves the games current state represented by the GameModel;

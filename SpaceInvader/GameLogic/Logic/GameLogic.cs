@@ -127,9 +127,15 @@ namespace GameLogic
         /// Checks if the GameState is finnished
         /// </summary>
         /// <returns>true if the game GameState changed to Finnished </returns>
-        public bool GameEnd()
+        public bool CheckGameEnd()
         {
-            return this.Model.GameState == GameState.Finished;
+            if (this.Model.Player.HitPoint < 1)
+            {
+                this.GameStateSwitch(GameState.Finished);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
