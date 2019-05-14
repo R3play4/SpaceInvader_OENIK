@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRepository", "ClassRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic.Test", "GameLogic.Test\GameLogic.Test.csproj", "{FD70AA6B-AC22-48B8-AA4C-60E198EE727C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "GameLogic\Logic.csproj", "{281345E0-8A5E-4A7B-8E56-400C3BEFB44F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{281345E0-8A5E-4A7B-8E56-400C3BEFB44F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Display", "Display\Display.csproj", "{D3BC4CB7-76C2-4795-8670-59CF95055944}"
 EndProject
