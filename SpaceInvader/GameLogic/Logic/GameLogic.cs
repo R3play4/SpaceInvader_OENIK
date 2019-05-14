@@ -22,7 +22,7 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        public IGameModel model;
+        public IGameModel Model { get; private set; }
 
         private IGameRepository repository;
 
@@ -35,18 +35,18 @@ namespace GameLogic
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
-        /// <param name="model">Game model.</param>
+        /// <param name="model">Game Model.</param>
         public GameLogic(string filePath)
         {
             this.repository = new GameRepository();
-            this.model = this.repository.LoadGameState(filePath);
+            this.Model = this.repository.LoadGameState(filePath);
             this.UfoTimerTick = 1000;
         }
 
         public GameLogic()
         {
             this.repository = new GameRepository();
-            this.model = null;
+            this.Model = null;
             this.UfoTimerTick = 1000;
         }
 
@@ -71,7 +71,7 @@ namespace GameLogic
 
         public void ProjectileMove()
         {
-            foreach (Projectile projectile in this.model.Projectiles)
+            foreach (Projectile projectile in this.Model.Projectiles)
             {
                 projectile.Move();
             }
@@ -83,7 +83,7 @@ namespace GameLogic
             gameItem.TakeDamage();
             if (projectile.SourceObject.GetType() == typeof(Player) && gameItem.GetType() != typeof(Shield))
             {
-                this.model.Score += ((UFO)gameItem).Points;
+                this.Model.Score += ((UFO)gameItem).Points;
             }
 
             this.DeathCheck(projectile, typeof(Projectile));
@@ -95,30 +95,30 @@ namespace GameLogic
             {
                 if (type == typeof(Projectile))
                 {
-                    this.model.Projectiles.Remove((Projectile)item);
+                    this.Model.Projectiles.Remove((Projectile)item);
                 }
                 else if (type == typeof(UFO))
                 {
-                    this.model.UFOs.Remove((UFO)item);
+                    this.Model.UFOs.Remove((UFO)item);
                 }
                 else if (type == typeof(Shield))
                 {
-                    this.model.Shields.Remove((Shield)item);
+                    this.Model.Shields.Remove((Shield)item);
                 }
                 else if (type == typeof(Player))
                 {
-                    this.model.GameState = GameState.Finished;
+                    this.Model.GameState = GameState.Finished;
                 }
             }
         }
 
         public void CleanupOffscreenProjectiles()
         {
-            for (int i = this.model.Projectiles.Count - 1; i >= 0; i--)
+            for (int i = this.Model.Projectiles.Count - 1; i >= 0; i--)
             {
-                if (this.model.Projectiles[i].Y < 0 || this.model.Projectiles[i].Y > Settings.WindowHeight)
+                if (this.Model.Projectiles[i].Y < 0 || this.Model.Projectiles[i].Y > Settings.WindowHeight)
                 {
-                    this.model.Projectiles.RemoveAt(i);
+                    this.Model.Projectiles.RemoveAt(i);
                 }
             }
         }
@@ -129,49 +129,56 @@ namespace GameLogic
         /// <returns>true if the game GameState changed to Finnished </returns>
         public bool GameEnd()
         {
-            return this.model.GameState == GameState.Finished;
+            return this.Model.GameState == GameState.Finished;
         }
 
         /// <summary>
         /// Changes Game State
         /// </summary>
         /// <param name="newState">new State</param>
-        public void GameStateSwitch(GameState newState)
+        public void GameStateSwitch()
         {
-            this.model.GameState = newState;
+            switch (this.Model.GameState)
+            {
+                default:
+                case GameState.Paused: this.Model.GameState = GameState.Running;
+                    break;
+                case GameState.Running: this.Model.GameState = GameState.Paused;
+                    break;
+            }
         }
 
         public void UfoShoot()
         {
             if (r.Next(1,4) % 3 == 0)
             {
-                this.model.Projectiles.Add(this.model.UFOs[r.Next() % this.model.UFOs.Count].Shoot());
+                this.Model.Projectiles.Add(this.Model.UFOs[r.Next() % this.Model.UFOs.Count].Shoot());
             }
         }
 
         public void PlayerMove(bool? direction)
         {
-            if (direction == true && (model.Player.X + Settings.ShipSize + Settings.PlayerStepSize) < Settings.WindowWidth)
+            if (direction == true && (Model.Player.X + Settings.ShipSize + Settings.PlayerStepSize) < Settings.WindowWidth)
             {
-                this.model.Player.Move(Settings.PlayerStepSize);
+                this.Model.Player.Move(Settings.PlayerStepSize);
             }
-            else if (direction == false && (model.Player.X - Settings.PlayerStepSize) > 0)
+            else if (direction == false && (Model.Player.X - Settings.PlayerStepSize) > 0)
             {
-                this.model.Player.Move(Settings.PlayerStepSize * -1);
+                this.Model.Player.Move(Settings.PlayerStepSize * -1);
             }
         }
 
         public bool CheckIfLevelCleared()
         {
-            if (this.model.UFOs.Count == 0)
+            if (this.Model.UFOs.Count == 0)
             {
                 GameModel tempModel = this.repository.LoadGameState(@"default.xml");
-                this.model.UFOs = tempModel.UFOs;
-                this.model.Projectiles = new List<Projectile>();
+                this.Model.UFOs = tempModel.UFOs;
+                this.Model.Projectiles = new List<Projectile>();
                 this.UfoTimerTick *= 0.8;
-                if (this.model.Player.HitPoint < 6)
+                if (this.Model.Player.HitPoint < 6)
                 {
-                    this.model.Player.HitPoint++;
+                    this.Model.Player.HitPoint++;
                 }
 
                 return true;
@@ -186,12 +193,12 @@ namespace GameLogic
         /// <param name="fileName">name of the save file, XML format</param>
         public void LoadGame(string fileName)
         {
-            this.model = this.repository.LoadGameState(fileName);
+            this.Model = this.repository.LoadGameState(fileName);
         }
 
         public void UfoMove()
         {
-            foreach (UFO ufo in this.model.UFOs)
+            foreach (UFO ufo in this.Model.UFOs)
             {
                 ufo.Move();
             }
@@ -210,22 +217,22 @@ namespace GameLogic
                     {
                         UFO sideMovingUFO = new UFO(20, 25, 100);
                         this.ufoMovingRight = true;
-                        model.UFOs.Add(sideMovingUFO);
+                        Model.UFOs.Add(sideMovingUFO);
                     }
                     else
                     {
                         UFO sideMovingUFO = new UFO((int)(Settings.WindowWidth - 20), 25, 100);
                         this.ufoMovingRight = false;
-                        model.UFOs.Add(sideMovingUFO);
+                        Model.UFOs.Add(sideMovingUFO);
                     }
                 }
             }
             else
             {
                 // There is already a moving UFO. Loops through all the UFO's and moves the one with 100 points sideways.
-                for (int i = 0; i < this.model.UFOs.Count(); i++)
+                for (int i = 0; i < this.Model.UFOs.Count(); i++)
                 {
-                    UFO actualUFO = model.UFOs[i];
+                    UFO actualUFO = Model.UFOs[i];
 
                     if (actualUFO.Points == 100 && ufoMovingRight == true)
                     {
@@ -237,7 +244,7 @@ namespace GameLogic
                     }
 
                     if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)
-                        model.UFOs.Remove(actualUFO);
+                        Model.UFOs.Remove(actualUFO);
                 }
             }
         }
@@ -246,11 +253,11 @@ namespace GameLogic
         {
             int i = 0;
 
-            while (i < model.UFOs.Count() && model.UFOs[i].Points != 100)
+            while (i < Model.UFOs.Count() && Model.UFOs[i].Points != 100)
                 i++;
 
             // true if displayed
-            return i < model.UFOs.Count();
+            return i < Model.UFOs.Count();
 
         }
 
@@ -259,7 +266,7 @@ namespace GameLogic
         /// </summary>
         public void PlayerShoot()
         {
-            this.model.Projectiles.Add(this.model.Player.Shoot());
+            this.Model.Projectiles.Add(this.Model.Player.Shoot());
         }
 
         /// <summary>
@@ -268,7 +275,7 @@ namespace GameLogic
         /// <param name="fileName">name of the save file, XML format</param>
         public void SaveGame(string fileName)
         {
-            this.repository.SaveGameState(fileName, (GameModel)this.model);
+            this.repository.SaveGameState(fileName, (GameModel)this.Model);
         }
     }
 }

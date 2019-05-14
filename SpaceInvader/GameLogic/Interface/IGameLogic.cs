@@ -11,12 +11,14 @@ namespace GameLogic.Interface
     using System.Threading;
     using System.Threading.Tasks;
     using ClassRepository;
+    using ClassRepository.Model;
 
     /// <summary>
     /// GameLogic interface handles the communication with the GameModel layer.
     /// </summary>
     public interface IGameLogic
     {
+        IGameModel Model { get; }
         /// <summary>
         /// Handles player movement.
         /// </summary>
@@ -39,7 +41,7 @@ namespace GameLogic.Interface
         /// Changes Game State
         /// </summary>
         /// <param name="newState">new State</param>
-        void GameStateSwitch(GameState newState);
+        void GameStateSwitch();
 
         /// <summary>
         /// Checks if the GameState is finnished
