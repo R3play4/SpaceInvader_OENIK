@@ -394,13 +394,31 @@
       <R>20</R>
       <HitPoint>4</HitPoint>
     </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>130</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>210</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
+	<Shield>
+      <Y>400</Y>
+      <X>290</X>
+      <R>20</R>
+      <HitPoint>4</HitPoint>
+    </Shield>
   </Shields>
   <Player>
-    <Y>450</Y>
+    <Y>480</Y>
     <X>250</X>
     <R>10</R>
     <HitPoint>3</HitPoint>
   </Player>
-  <GameState>Paused</GameState>
+  <GameState>Running</GameState>
   <Score>0</Score>
 </GameModel>

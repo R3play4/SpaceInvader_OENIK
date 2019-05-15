@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace GameLogic
+namespace SpaceInvaderLogic
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace GameLogic
     using ClassRepository;
     using ClassRepository.Model;
     using ClassRepository.Repository;
-    using global::GameLogic.Interface;
+    using global::SpaceInvaderLogic.Interfaces;
     using GlobalSettings;
 
     /// <summary>
@@ -22,90 +22,118 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        public IGameModel model;
-
-        private IGameRepository repository;
-
         private Random r = new Random();
+        private bool ufoMovingRight; // true = right, false = left
+        private IGameRepository repository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
-        /// <param name="model">Game model.</param>
-        public GameLogic(IGameModel model)
+        /// <param name="filePath">path of the file that will be loaded</param>
+        public GameLogic(string filePath)
         {
-            this.model = model;
             this.repository = new GameRepository();
+            this.Model = this.repository.LoadGameState(filePath);
+            this.UfoTimerTick = 1000;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
-        // public GameModel Model { get; }
+        public GameLogic()
+        {
+            this.repository = new GameRepository();
+            this.Model = null;
+            this.UfoTimerTick = 1000;
+        }
 
         /// <summary>
-        /// Gets or sets threads that will handle the different GameItems.
+        /// Gets or sets GameModel interface
         /// </summary>
-        public Thread[] Threads { get; set; }
+        public IGameModel Model { get; set; }
+
+        /// <summary>
+        /// Gets or sets UfoTimer
+        /// </summary>
+        public double UfoTimerTick { get; set; }
 
         /// <summary>
         /// Checks if the projectile hit any relevant GameItems
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
+        /// <param name="gameItem">item that shot the projectile</param>
+        /// <returns>true if coliission occured, fale otherwise</returns>
         public bool CollisionCheck(Projectile projectile, GameItem gameItem)
         {
             return Geometry.Combine(projectile.Shape(), gameItem.Shape(), GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
 
+        /// <summary>
+        /// Moves all of the projectiles
+        /// </summary>
         public void ProjectileMove()
         {
-            foreach (Projectile projectile in this.model.Projectiles)
+            foreach (Projectile projectile in this.Model.Projectiles)
             {
                 projectile.Move();
             }
         }
 
+        /// <summary>
+        /// Handles the collision. Addes points to player if necessary. Removes dead objects.
+        /// </summary>
+        /// <param name="projectile">projectile to be checked</param>
+        /// <param name="gameItem">itme that collided with the projectile</param>
         public void HandleCollision(Projectile projectile, GameItem gameItem)
         {
             projectile.TakeDamage();
             gameItem.TakeDamage();
-            if (projectile.SourceObject.GetType() == typeof(Player))
+            if (projectile.SourceObject.GetType() == typeof(Player) && gameItem.GetType() != typeof(Shield))
             {
-                this.model.Score += ((UFO)gameItem).Points;
+                this.Model.Score += ((Ufo)gameItem).Points;
             }
+
             this.DeathCheck(projectile, typeof(Projectile));
         }
 
+        /// <summary>
+        /// Checks if the hit point of  gameItem reached zero. If yes than removes it from the proper list.
+        /// </summary>
+        /// <param name="item">item to be checked</param>
+        /// <param name="type">type of the item</param>
         public void DeathCheck(GameItem item, Type type)
         {
             if (item.HitPoint == 0)
             {
                 if (type == typeof(Projectile))
                 {
-                    this.model.Projectiles.Remove((Projectile)item);
+                    this.Model.Projectiles.Remove((Projectile)item);
                 }
-                else if (type == typeof(UFO))
+                else if (type == typeof(Ufo))
                 {
-                    this.model.UFOs.Remove((UFO)item);
+                    this.Model.Ufos.Remove((Ufo)item);
                 }
                 else if (type == typeof(Shield))
                 {
-                    this.model.Shields.Remove((Shield)item);
+                    this.Model.Shields.Remove((Shield)item);
                 }
                 else if (type == typeof(Player))
                 {
-                    this.model.GameState = GameState.Finished;
+                    this.Model.GameState = GameState.Finished;
                 }
             }
         }
 
+        /// <summary>
+        /// Cleans up the projectiles that have left the screen
+        /// </summary>
         public void CleanupOffscreenProjectiles()
         {
-            for (int i = this.model.Projectiles.Count - 1; i >= 0; i--)
+            for (int i = this.Model.Projectiles.Count - 1; i >= 0; i--)
             {
-                if (this.model.Projectiles[i].Y < 0 || this.model.Projectiles[i].Y > Settings.WindowHeight)
+                if (this.Model.Projectiles[i].Y < 0 || this.Model.Projectiles[i].Y > Settings.WindowHeight)
                 {
-                    this.model.Projectiles.RemoveAt(i);
+                    this.Model.Projectiles.RemoveAt(i);
                 }
             }
         }
@@ -114,9 +142,15 @@ namespace GameLogic
         /// Checks if the GameState is finnished
         /// </summary>
         /// <returns>true if the game GameState changed to Finnished </returns>
-        public bool GameEnd()
+        public bool CheckGameEnd()
         {
-            return this.model.GameState == GameState.Finished;
+            if (this.Model.Player.HitPoint < 1)
+            {
+                this.GameStateSwitch(GameState.Finished);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -125,15 +159,57 @@ namespace GameLogic
         /// <param name="newState">new State</param>
         public void GameStateSwitch(GameState newState)
         {
-            this.model.GameState = newState;
+            this.Model.GameState = newState;
         }
 
+        /// <summary>
+        /// Creates projectile at the UFO's x y position and adds it to the projectile list.
+        /// </summary>
         public void UfoShoot()
         {
-            if (r.Next(1,4) % 3 == 0)
+            if (this.r.Next(1, 4) % 3 == 0)
             {
-                this.model.Projectiles.Add(this.model.UFOs[r.Next() % this.model.UFOs.Count].Shoot());
+                this.Model.Projectiles.Add(this.Model.Ufos[this.r.Next() % this.Model.Ufos.Count].Shoot());
             }
+        }
+
+        /// <summary>
+        /// Moves player left or right. Checks if the player have reached the side of the window.
+        /// </summary>
+        /// <param name="isMovingRight">true = right, false = left</param>
+        public void PlayerMove(bool? isMovingRight)
+        {
+            if (isMovingRight == true && (this.Model.Player.X + Settings.ShipSize + Settings.PlayerStepSize) < Settings.WindowWidth)
+            {
+                this.Model.Player.Move(Settings.PlayerStepSize);
+            }
+            else if (isMovingRight == false && (this.Model.Player.X - Settings.PlayerStepSize) > 0)
+            {
+                this.Model.Player.Move(Settings.PlayerStepSize * -1);
+            }
+        }
+
+        /// <summary>
+        /// Checks if any UFO have left on screen. Acts extra life to the player if cleared. Makes the UFO faster.
+        /// </summary>
+        /// <returns>true if there are no more ufos</returns>
+        public bool CheckIfLevelCleared()
+        {
+            if (this.Model.Ufos.Count == 0)
+            {
+                GameModel tempModel = this.repository.LoadGameState(@"default.xml");
+                this.Model.Ufos = tempModel.Ufos;
+                this.Model.Projectiles = new List<Projectile>();
+                this.UfoTimerTick *= 0.8;
+                if (this.Model.Player.HitPoint < 6)
+                {
+                    this.Model.Player.HitPoint++;
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -142,27 +218,84 @@ namespace GameLogic
         /// <param name="fileName">name of the save file, XML format</param>
         public void LoadGame(string fileName)
         {
-            this.model = this.repository.LoadGameState(fileName);
+            this.Model = this.repository.LoadGameState(fileName);
         }
 
         /// <summary>
-        /// Handles player movement.
+        /// Moves the ufo object
         /// </summary>
-        /// <param name="movement">true = right, false = left</param>
-        public void PlayerMove(double movement)
-        {
-            if ((model.Player.X + movement) < 0 || (model.Player.X + Settings.ShipSize + movement) >= Settings.WindowWidth) // Checks if the left or right side was reached.
-                movement = 0;
-
-            this.model.Player.Move(movement);
-        }
-
         public void UfoMove()
         {
-            foreach (UFO ufo in this.model.UFOs)
+            foreach (Ufo ufo in this.Model.Ufos)
             {
                 ufo.Move();
             }
+        }
+
+        /// <summary>
+        /// Moves the UFO sideways.
+        /// </summary>
+        public void UfoMoveSideways()
+        {
+            if (!this.IsSideMovingUfoDisplayed())
+            {
+                // 20% chance that a sidemoving UFO will appear
+                if (this.r.Next(1, 100) > 90)
+                {
+                    // 50% chance of moving left or right.
+                    if (this.r.Next(1, 100) > 50)
+                    {
+                        Ufo sideMovingUFO = new Ufo(20, 25, 100);
+                        this.ufoMovingRight = true;
+                        this.Model.Ufos.Add(sideMovingUFO);
+                    }
+                    else
+                    {
+                        Ufo sideMovingUFO = new Ufo((int)(Settings.WindowWidth - 20), 25, 100);
+                        this.ufoMovingRight = false;
+                        this.Model.Ufos.Add(sideMovingUFO);
+                    }
+                }
+            }
+            else
+            {
+                // There is already a moving UFO. Loops through all the UFO's and moves the one with 100 points sideways.
+                for (int i = 0; i < this.Model.Ufos.Count(); i++)
+                {
+                    Ufo actualUFO = this.Model.Ufos[i];
+
+                    if (actualUFO.Points == 100 && this.ufoMovingRight == true)
+                    {
+                        actualUFO.MoveSideWays(Settings.UfoSideStepSize);
+                    }
+                    else if (actualUFO.Points == 100 && this.ufoMovingRight == false)
+                    {
+                        actualUFO.MoveSideWays(Settings.UfoSideStepSize * -1);
+                    }
+
+                    if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)
+                    {
+                        this.Model.Ufos.Remove(actualUFO);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if there is any SideMoving ufos on the screen. (Sidemocing UFO is identified by the fact that they worth 100 points
+        /// </summary>
+        /// <returns>true or false</returns>
+        public bool IsSideMovingUfoDisplayed()
+        {
+            int i = 0;
+
+            while (i < this.Model.Ufos.Count() && this.Model.Ufos[i].Points != 100)
+            {
+                i++;
+            }
+
+            // true if displayed
+            return i < this.Model.Ufos.Count();
         }
 
         /// <summary>
@@ -170,7 +303,7 @@ namespace GameLogic
         /// </summary>
         public void PlayerShoot()
         {
-            this.model.Projectiles.Add(this.model.Player.Shoot());
+            this.Model.Projectiles.Add(this.Model.Player.Shoot());
         }
 
         /// <summary>
@@ -179,7 +312,7 @@ namespace GameLogic
         /// <param name="fileName">name of the save file, XML format</param>
         public void SaveGame(string fileName)
         {
-            this.repository.SaveGameState(fileName, (GameModel)this.model);
+            this.repository.SaveGameState(fileName, (GameModel)this.Model);
         }
     }
 }

@@ -6,11 +6,10 @@
         xmlns:local="clr-namespace:GlobalSettings;assembly=GlobalSettings"
         xmlns:controls="clr-namespace:Display.GameDisplay"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="WidthAndHeight" >
+        Title="MainWindow" SizeToContent="WidthAndHeight" d:DesignWidth="647.54" d:DesignHeight="544.879" >
     <!--Height="{x:Static local:Settings.WindowHeight}"
         Width="{x:Static local:Settings.WindowWidth}"> -->
     <controls:GameControl Height="{x:Static local:Settings.WindowHeight}"
                           Width="{x:Static local:Settings.WindowWidth}">
     </controls:GameControl>
- 
 </Window>

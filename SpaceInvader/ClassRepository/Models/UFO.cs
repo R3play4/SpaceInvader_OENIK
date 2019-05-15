@@ -8,23 +8,41 @@ namespace ClassRepository
     using System.Windows.Media;
     using GlobalSettings;
 
-    public class UFO : GameItem
+    /// <summary>
+    /// UFO game item.
+    /// </summary>
+    public class Ufo : GameItem
     {
         private int sidewaysMoveCount = 15;
 
-        public UFO()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ufo"/> class.
+        /// </summary>
+        public Ufo()
         {
         }
 
-        public UFO(int x, int y, int points)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ufo"/> class.
+        /// </summary>
+        /// <param name="x">x coordinate</param>
+        /// <param name="y">y coordinate</param>
+        /// <param name="points">points that ufo worth</param>
+        public Ufo(int x, int y, int points)
             : base(x, y)
         {
             this.HitPoint = 1;
             this.Points = points;
         }
 
+        /// <summary>
+        /// Gets or sets the points that a player can get for this UFO
+        /// </summary>
         public int Points { get; set; }
 
+        /// <summary>
+        /// Moves the ufo side ways by 15. Than changes direction and lowers their position on the Y axis
+        /// </summary>
         public void Move()
         {
             if (this.sidewaysMoveCount > 0)
@@ -49,16 +67,33 @@ namespace ClassRepository
             }
         }
 
+        /// <summary>
+        /// Moves the UFO side ways
+        /// </summary>
+        /// <param name="diff">the difference by with the UFO is moved</param>
+        public void MoveSideWays(double diff)
+        {
+            this.X += diff;
+        }
+
+        /// <summary>
+        /// Gets the shape of the UFO
+        /// </summary>
+        /// <returns>Shape data of the ufo</returns>
         public override Geometry Shape()
         {
-            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.ShipSize, Settings.ShipSize));
+            return new RectangleGeometry(new Rect(this.X, this.Y, Settings.UfoShipSize, Settings.UfoShipSize));
         }
 
+        /// <summary>
+        /// Create a projectile at the midle of the UFo's positon
+        /// </summary>
+        /// <returns>new projectile</returns>
         public Projectile Shoot()
         {
-            return new Projectile(this.X + (Settings.ShipSize/2), this.Y + this.R, false, this);
+            return new Projectile(this.X + (Settings.UfoShipSize / 2), this.Y, false, this);
         }
 
-        private void MoveDown() => this.Y += 10;
+        private void MoveDown() => this.Y += 15;
     }
 }

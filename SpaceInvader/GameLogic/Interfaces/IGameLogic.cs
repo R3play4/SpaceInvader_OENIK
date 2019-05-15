@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace GameLogic.Interface
+namespace SpaceInvaderLogic.Interfaces
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +11,7 @@ namespace GameLogic.Interface
     using System.Threading;
     using System.Threading.Tasks;
     using ClassRepository;
+    using ClassRepository.Model;
 
     /// <summary>
     /// GameLogic interface handles the communication with the GameModel layer.
@@ -18,15 +19,15 @@ namespace GameLogic.Interface
     public interface IGameLogic
     {
         /// <summary>
-        /// Gets or sets threads that will handle the different GameItems.
+        /// Gets gameModel that represents the state of the game.
         /// </summary>
-        Thread[] Threads { get; set; }
+        IGameModel Model { get; }
 
         /// <summary>
         /// Handles player movement.
         /// </summary>
         /// <param name="isMovingRight">true = right, false = left</param>
-        void PlayerMove(double isMovingRight);
+        void PlayerMove(bool? isMovingRight);
 
         /// <summary>
         /// Handles Player shooting logic.
@@ -38,6 +39,7 @@ namespace GameLogic.Interface
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
         /// <param name="gameItem">gameItem that is examined</param>
+        /// <returns>true if coliission occured, fale otherwise</returns>
         bool CollisionCheck(Projectile projectile, GameItem gameItem);
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace GameLogic.Interface
         /// Checks if the GameState is finnished
         /// </summary>
         /// <returns>true if the game GameState changed to Finnished </returns>
-        bool GameEnd();
+        bool CheckGameEnd();
 
         /// <summary>
         /// Saves the games current state represented by the GameModel;
