@@ -65,7 +65,7 @@ namespace Display.GameDisplay
             foreach (var ufo in gameModel.UFOs)
             {
                 RectangleGeometry actualGeometry = (RectangleGeometry)ufo.Shape();
-                context.DrawRectangle(GetUFOImg(ufo.Points), null, actualGeometry.Rect);
+                context.DrawRectangle(GetUfoImg(ufo.Points), null, actualGeometry.Rect);
             }
         }
 
@@ -80,8 +80,6 @@ namespace Display.GameDisplay
 
         public void DisplayGameOver(DrawingContext context)
         {
-            DrawingGroup dg = new DrawingGroup();
-
             Rect geometry = new Rect(0, 0, Settings.WindowWidth, Settings.WindowHeight);
             context.DrawRectangle(Settings.GameOverBrush, null, geometry);
         }
@@ -143,7 +141,7 @@ namespace Display.GameDisplay
             }
         }
 
-        public ImageBrush GetUFOImg(int point)
+        public ImageBrush GetUfoImg(int point)
         {
             switch (point)
             {
