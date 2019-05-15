@@ -24,7 +24,7 @@ namespace Display
     /// </summary>
     public partial class MainMenuWindow : Window
     {
-        public GameLogic.GameLogic Logic { get; set; }
+        public SpaceInvaderLogic.GameLogic Logic { get; set; }
 
         public MainMenuWindow()
         {
@@ -32,7 +32,7 @@ namespace Display
         }
         private void newGameBTN_Click(object sender, RoutedEventArgs e)
         {
-            this.Logic = new GameLogic.GameLogic(Settings.GameStateXML);
+            this.Logic = new SpaceInvaderLogic.GameLogic(Settings.GameStateXML);
             MainWindow window = new MainWindow();
             window.ShowDialog();
         }
@@ -43,7 +43,7 @@ namespace Display
 
             if(ofd.ShowDialog() == true)
             {
-                this.Logic = new GameLogic.GameLogic(ofd.FileName);
+                this.Logic = new SpaceInvaderLogic.GameLogic(ofd.FileName);
                 //GlobalSettings.Settings.GameStateXML = ofd.FileName;
             }
 

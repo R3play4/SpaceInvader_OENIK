@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace GameLogic.Interface
+namespace SpaceInvaderLogic.Interfaces
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +18,9 @@ namespace GameLogic.Interface
     /// </summary>
     public interface IGameLogic
     {
+        /// <summary>
+        /// Gets gameModel that represents the state of the game.
+        /// </summary>
         IGameModel Model { get; }
 
         /// <summary>
@@ -36,6 +39,7 @@ namespace GameLogic.Interface
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
         /// <param name="gameItem">gameItem that is examined</param>
+        /// <returns>true if coliission occured, fale otherwise</returns>
         bool CollisionCheck(Projectile projectile, GameItem gameItem);
 
         /// <summary>

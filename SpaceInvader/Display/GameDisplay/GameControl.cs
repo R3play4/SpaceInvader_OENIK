@@ -9,15 +9,15 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using ClassRepository;
 using ClassRepository.Repository;
-using GameLogic;
-using GameLogic.Interface;
+using SpaceInvaderLogic;
+using SpaceInvaderLogic.Interfaces;
 using Microsoft.Win32;
 
 namespace Display.GameDisplay
 {
     public class GameControl : FrameworkElement
     {
-        GameLogic.GameLogic gameLogic;
+        SpaceInvaderLogic.GameLogic gameLogic;
         GameDisplay gameDisplay;
         DispatcherTimer ufoTimer;
         DispatcherTimer sidewayUfoTimer;
