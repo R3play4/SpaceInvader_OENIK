@@ -200,7 +200,7 @@ namespace SpaceInvaderLogic
         {
             if (this.Model.Ufos.Count == 0)
             {
-                GameModel tempModel = this.repository.LoadGameState(@"default.xml");
+                GameModel tempModel = this.repository.LoadGameState("..\\..\\DefaultGameState\\default_test.xml");
                 this.Model.Ufos = tempModel.Ufos;
                 this.Model.Projectiles = new List<Projectile>();
                 this.UfoTimerTick *= 0.8;
