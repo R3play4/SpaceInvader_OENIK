@@ -50,6 +50,7 @@ namespace Display
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML Files | *.xml";
             sfd.DefaultExt = "xml";
+            
             if (sfd.ShowDialog() == true)
             {
                 this.logic.SaveGame(sfd.SafeFileName);

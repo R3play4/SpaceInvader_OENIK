@@ -169,7 +169,10 @@ namespace SpaceInvaderLogic
         {
             if (this.Model.Ufos.Count > 0 && this.r.Next(1, 4) % 3 == 0)
             {
-                this.Model.Projectiles.Add(this.Model.Ufos[this.r.Next() % this.Model.Ufos.Count].Shoot());
+                if (this.Model.Ufos.Count() != 0)
+                {
+                    this.Model.Projectiles.Add(this.Model.Ufos[this.r.Next() % this.Model.Ufos.Count].Shoot());
+                }
             }
         }
 
@@ -197,7 +200,7 @@ namespace SpaceInvaderLogic
         {
             if (this.Model.Ufos.Count == 0)
             {
-                GameModel tempModel = this.repository.LoadGameState(@"default.xml");
+                GameModel tempModel = this.repository.LoadGameState("..\\..\\DefaultGameState\\default.xml");
                 this.Model.Ufos = tempModel.Ufos;
                 this.Model.Projectiles = new List<Projectile>();
                 this.UfoTimerTick *= 0.8;
@@ -270,7 +273,7 @@ namespace SpaceInvaderLogic
                     }
                     else if (actualUFO.Points == 100 && this.ufoMovingRight == false)
                     {
-                        actualUFO.MoveSideWays(Settings.UfoSideStepSize * -1);
+                        actualUFO.MoveSideWays(-Settings.UfoSideStepSize);
                     }
 
                     if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)

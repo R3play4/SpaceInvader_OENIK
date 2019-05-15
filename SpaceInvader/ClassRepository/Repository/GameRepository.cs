@@ -25,7 +25,6 @@ namespace ClassRepository.Repository
             StreamReader reader = new StreamReader(filePath);
             GameModel model = new GameModel();
             model = (GameModel)this.serializer.Deserialize(reader);
-            reader.Close();
             return model;
         }
 
