@@ -18,7 +18,6 @@ namespace ClassRepository
             : base(x, y)
         {
             this.HitPoint = 4;
-            this.R = 20;
         }
 
         public override Geometry Shape()

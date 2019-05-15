@@ -62,9 +62,9 @@ namespace ClassRepository
 
         public Projectile Shoot()
         {
-            return new Projectile(this.X + (Settings.UfoShipSize/2), this.Y + this.R, false, this);
+            return new Projectile(this.X + (Settings.UfoShipSize/2), this.Y, false, this);
         }
 
-        private void MoveDown() => this.Y += 10;
+        private void MoveDown() => this.Y += 15;
     }
 }

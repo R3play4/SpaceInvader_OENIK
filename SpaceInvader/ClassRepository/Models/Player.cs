@@ -17,7 +17,6 @@ namespace ClassRepository
         public Player(double x, double y)
             : base(x, y)
         {
-            this.R = 10;
             this.HitPoint = 3;
         }
 
@@ -33,8 +32,7 @@ namespace ClassRepository
 
         public Projectile Shoot()
         {
-            //
-            return new Projectile(this.X + (Settings.ShipSize/2), this.Y-this.R, true, this);
+            return new Projectile(this.X + (Settings.ShipSize/2), this.Y, true, this);
         }
     }
 }

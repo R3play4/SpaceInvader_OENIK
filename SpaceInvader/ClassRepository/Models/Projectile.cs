@@ -20,7 +20,6 @@ namespace ClassRepository
             this.HitPoint = 1;
             this.SourceObject = sourceObject;
             this.IsMovingUp = direction;
-            this.R = 2;
         }
 
         public bool IsMovingUp { get; set; }

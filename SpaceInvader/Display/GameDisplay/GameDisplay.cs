@@ -97,22 +97,6 @@ namespace Display.GameDisplay
                 new RectangleGeometry(new Rect(0, 0, Settings.WindowWidth - Settings.FrameSize * 4, Settings.WindowHeight - Settings.FrameSize * 2))
                 ));
 
-            // Playership
-            //dg.Children.Add(new GeometryDrawing(Settings.ShipColor, new Pen(Settings.ShipFrameColor, 1),
-            //    this.gameModel.Player.Shape()));
-
-            // Ufo-s
-            //foreach (UFO ufo in gameModel.UFOs)
-            //{
-            //     dg.Children.Add(new GeometryDrawing(GetUfoColor(ufo.Points), new Pen(GetUfoColor(ufo.Points), 1), ufo.Shape()));
-            //}
-
-            // Shields
-            //foreach (Shield shield in gameModel.Shields)
-            //{
-            //    dg.Children.Add(new GeometryDrawing(Settings.ShieldColor, new Pen(Settings.ShieldColor, 1), shield.Shape()));
-            //}
-
             // Projectiles
             foreach (Projectile projectile in gameModel.Projectiles)
             {
@@ -140,15 +124,6 @@ namespace Display.GameDisplay
             for (int i = 1; i <= gameModel.Player.HitPoint; i++)
             {
                 DrawPlayerLife(context, Settings.WindowWidth - i*20, 5);
-
-                //if (i == 0)
-                //    DrawPlayerLife(context, Settings.WindowWidth - 70, 5);
-                //if(i == 1)
-                //    DrawPlayerLife(context, Settings.WindowWidth - 50, 5);
-                //if(i == 2)
-                //{
-                //    DrawPlayerLife(context, Settings.WindowWidth - 30, 5);
-                //}
             }
 
         }

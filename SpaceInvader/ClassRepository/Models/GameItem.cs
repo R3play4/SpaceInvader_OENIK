@@ -22,8 +22,6 @@ namespace ClassRepository
 
         public double X { get; set; }
 
-        public double R { get; set; }
-
         public int HitPoint { get; set; }
 
         // public string ImgPath { get; set; }
