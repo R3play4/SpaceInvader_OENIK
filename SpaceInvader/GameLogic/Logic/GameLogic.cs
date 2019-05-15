@@ -167,7 +167,7 @@ namespace SpaceInvaderLogic
         /// </summary>
         public void UfoShoot()
         {
-            if (this.r.Next(1, 4) % 3 == 0)
+            if (this.Model.Ufos.Count > 0 && this.r.Next(1, 4) % 3 == 0)
             {
                 this.Model.Projectiles.Add(this.Model.Ufos[this.r.Next() % this.Model.Ufos.Count].Shoot());
             }
