@@ -54,6 +54,7 @@ namespace GlobalSettings
         public static string Shield_3 = "..\\..\\Images\\Shield_3.png";
         public static string Shield_4 = "..\\..\\Images\\Shield_4.png";
         public static string MainMenuBackground = "..\\..\\Images\\MainMenuBG.png";
+        public static string GameOverBackground = "..\\..\\Images\\GameOverScreen.jpg";
 
         // Brushes
         public static ImageBrush UFO_1_Image = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_1, UriKind.Relative)));
@@ -65,6 +66,8 @@ namespace GlobalSettings
         public static ImageBrush Shield_2_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_2, UriKind.Relative)));
         public static ImageBrush Shield_3_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_3, UriKind.Relative)));
         public static ImageBrush Shield_4_Image = new ImageBrush(new BitmapImage(new Uri(Settings.Shield_4, UriKind.Relative)));
+
+        public static ImageBrush GameOverBrush = new ImageBrush(new BitmapImage(new Uri(Settings.GameOverBackground, UriKind.Relative)));
 
         // New Game State
         public static string GameStateXML = "..\\..\\DefaultGameState\\default.xml";

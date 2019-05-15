@@ -187,15 +187,12 @@ namespace Display.GameDisplay
                 this.isMovingRight = null;
                 this.gameLogic.GameStateSwitch(GameState.Running);
                 InvalidateVisual();
-
-                //SaveFileDialog sfd = new SaveFileDialog();
-
-                //if(sfd.ShowDialog() == true)
-                //{
-                //    this.gameLogic.SaveGame(sfd.FileName);
-                //}
             }
-            //InvalidateVisual();
+            else if (this.gameLogic.Model.GameState == GameState.Finished
+                     && e.Key == Key.Enter)
+            {
+                Window.GetWindow(this).Close();
+            }
         }
 
         protected override void OnRender(DrawingContext drawingContext)

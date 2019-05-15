@@ -82,19 +82,8 @@ namespace Display.GameDisplay
         {
             DrawingGroup dg = new DrawingGroup();
 
-            dg.Children.Add(new GeometryDrawing(Settings.BackgroundColor, new Pen(Settings.FrameColor, Settings.FrameSize),
-                new RectangleGeometry(new Rect(0, 0, Settings.WindowWidth - Settings.FrameSize * 4, Settings.WindowHeight - Settings.FrameSize * 2))
-                ));
-
-            FormattedText text = new FormattedText("GAME\nOVER", System.Globalization.CultureInfo.CurrentCulture,
-                                                    FlowDirection.LeftToRight, new Typeface("Arial"), 80, Brushes.Orange);
-            FormattedText text2 = new FormattedText("Press ENTER to continue", System.Globalization.CultureInfo.CurrentCulture,
-                                                    FlowDirection.LeftToRight, new Typeface("Arial"), 20, Brushes.Orange);
-
-            dg.Children.Add(new GeometryDrawing(Brushes.White,null, text.BuildGeometry(new Point(80, 80))));
-            dg.Children.Add(new GeometryDrawing(Brushes.White, null, text2.BuildGeometry(new Point(20, 400))));
-
-            context.DrawDrawing(dg);
+            Rect geometry = new Rect(0, 0, Settings.WindowWidth, Settings.WindowHeight);
+            context.DrawRectangle(Settings.GameOverBrush, null, geometry);
         }
 
         public void Display(DrawingContext context)
