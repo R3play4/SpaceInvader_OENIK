@@ -8,14 +8,26 @@ namespace ClassRepository
     using System.Windows.Media;
     using GlobalSettings;
 
+    /// <summary>
+    /// UFO game item.
+    /// </summary>
     public class UFO : GameItem
     {
         private int sidewaysMoveCount = 15;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UFO"/> class.
+        /// </summary>
         public UFO()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UFO"/> class.
+        /// </summary>
+        /// <param name="x">x coordinate</param>
+        /// <param name="y">y coordinate</param>
+        /// <param name="points">points that ufo worth</param>
         public UFO(int x, int y, int points)
             : base(x, y)
         {
@@ -23,8 +35,14 @@ namespace ClassRepository
             this.Points = points;
         }
 
+        /// <summary>
+        /// Gets or sets the points that a player can get for this UFO
+        /// </summary>
         public int Points { get; set; }
 
+        /// <summary>
+        /// Moves the ufo side ways by 15. Than changes direction and lowers their position on the Y axis
+        /// </summary>
         public void Move()
         {
             if (this.sidewaysMoveCount > 0)
@@ -49,20 +67,31 @@ namespace ClassRepository
             }
         }
 
-        // Moves right
+        /// <summary>
+        /// Moves the UFO side ways
+        /// </summary>
+        /// <param name="diff">the difference by with the UFO is moved</param>
         public void MoveSideWays(double diff)
         {
             this.X += diff;
         }
 
+        /// <summary>
+        /// Gets the shape of the UFO
+        /// </summary>
+        /// <returns>Shape data of the ufo</returns>
         public override Geometry Shape()
         {
             return new RectangleGeometry(new Rect(this.X, this.Y, Settings.UfoShipSize, Settings.UfoShipSize));
         }
 
+        /// <summary>
+        /// Create a projectile at the midle of the UFo's positon
+        /// </summary>
+        /// <returns>new projectile</returns>
         public Projectile Shoot()
         {
-            return new Projectile(this.X + (Settings.UfoShipSize/2), this.Y, false, this);
+            return new Projectile(this.X + (Settings.UfoShipSize / 2), this.Y, false, this);
         }
 
         private void MoveDown() => this.Y += 15;

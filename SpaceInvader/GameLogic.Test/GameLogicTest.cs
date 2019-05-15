@@ -43,7 +43,7 @@ namespace GameLogic.Test
         }
 
         /// <summary>
-        /// 
+        /// Tests if player's HitPoint is bigger than 0 than the gameState is not finnished.
         /// </summary>
         [Test]
         public void IfGameIsNotFinnished_ReturnsFalse()
@@ -61,6 +61,10 @@ namespace GameLogic.Test
             Assert.That(gameFinnshed, Is.EqualTo(false));
         }
 
+        /// <summary>
+        /// Checks if the logic properly sets the new state of the Game.
+        /// </summary>
+        /// <param name="newState">New GameState to be set</param>
         [TestCase(GameState.Paused)]
         public void WhenChangingGameState_StateIsChanged(GameState newState)
         {
@@ -77,6 +81,9 @@ namespace GameLogic.Test
             Assert.That(this.mockedGameModel.Object.GameState, Is.EqualTo(GameState.Paused));
         }
 
+        /// <summary>
+        /// Checks if the Logic shoot method creates a new Projectile with proper coordinates.
+        /// </summary>
         [Test]
         public void WhenPlayerShoots_NewProjectileCreatedWithGoodProperties()
         {
@@ -109,6 +116,10 @@ namespace GameLogic.Test
             Assert.That(lastProjectile.Y, Is.EqualTo(this.mockedGameModel.Object.Player.Y));
         }
 
+        /// <summary>
+        /// Test to check if the player moves to the right direction.
+        /// </summary>
+        /// <param name="isMovingRight">True= right, false = left</param>
         [TestCase(true)]
         public void IfPlayerMoves_MovesToRightDirection(bool isMovingRight)
         {
@@ -127,5 +138,71 @@ namespace GameLogic.Test
             // Assert
             Assert.That(this.mockedGameModel.Object.Player.X, Is.EqualTo(originalPosition + 3));
         }
+
+        /// <summary>
+        /// Checks if the colsion checks returns true in case of collision between Player and Projectile
+        /// </summary>
+        [TestCase]
+        public void IfPlayerCollidesWithProjectile_ReturnsTrue()
+        {
+            // Mock
+            Player player = new Player(10, 10);
+            Projectile collidesWith = new Projectile(10, 10, true, new UFO());
+            Projectile doesNotCollidesWith = new Projectile(1, 1, true, new UFO());
+            this.mockedGameModel = new Mock<GameModel>();
+            this.mockedGameModel.Object.Player = player;
+
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
+
+            // Act
+            bool collided = logic.CollisionCheck(collidesWith, this.mockedGameModel.Object.Player);
+            bool notCollided = logic.CollisionCheck(doesNotCollidesWith, this.mockedGameModel.Object.Player);
+
+            // Assert
+            Assert.That(collided, Is.EqualTo(true));
+            Assert.That(notCollided, Is.EqualTo(false));
+        }
+
+        /// <summary>
+        /// Checks if the upon the death of a given gameItem it is removed from the GameModel
+        /// </summary>
+        [TestCase]
+        public void WhenGameItemDies_ItIsRemovedFromTheModel()
+        {
+            // Mock
+            Projectile projectile = new Projectile(10, 10, true, new UFO());
+            projectile.HitPoint = 0;
+
+            UFO ufo = new UFO();
+            ufo.HitPoint = 0;
+
+            Shield shield = new Shield();
+            shield.HitPoint = 0;
+
+            List<Projectile> projectiles = new List<Projectile>();
+            List<UFO> ufos = new List<UFO>();
+            List<Shield> shields = new List<Shield>();
+
+            this.mockedGameModel = new Mock<GameModel>();
+
+            this.mockedGameModel.Object.Projectiles = projectiles;
+            this.mockedGameModel.Object.UFOs = ufos;
+            this.mockedGameModel.Object.Shields = shields;
+
+            this.mockedGameModel.Object.Projectiles.Add(projectile);
+            this.mockedGameModel.Object.UFOs.Add(ufo);
+            this.mockedGameModel.Object.Shields.Add(shield);
+
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
+
+            // Act
+            Assert.That(logic.Model.Projectiles.Count(), Is.EqualTo(1));
+            logic.DeathCheck(projectile, typeof(Projectile));
+            Assert.That(logic.Model.Projectiles.Count(), Is.EqualTo(0));
+
+        }
+
     }
 }

@@ -56,11 +56,6 @@ namespace GameLogic
         // public GameModel Model { get; }
 
         /// <summary>
-        /// Gets or sets threads that will handle the different GameItems.
-        /// </summary>
-        public Thread[] Threads { get; set; }
-
-        /// <summary>
         /// Checks if the projectile hit any relevant GameItems
         /// </summary>
         /// <param name="projectile">prjectile that is examined</param>
