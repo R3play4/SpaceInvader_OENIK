@@ -50,9 +50,9 @@ namespace ClassRepository
         /// <param name="player">player</param>
         /// <param name="gamestate">state of the game</param>
         /// <param name="score">score acchieved by the palyer</param>
-        public GameModel(List<UFO> ufos, List<Projectile> projectiles, List<Shield> shields, Player player, GameState gamestate = GameState.Paused, int score = 0)
+        public GameModel(List<Ufo> ufos, List<Projectile> projectiles, List<Shield> shields, Player player, GameState gamestate = GameState.Paused, int score = 0)
         {
-            this.UFOs = ufos;
+            this.Ufos = ufos;
             this.Projectiles = projectiles;
             this.Shields = shields;
             this.Player = player;
@@ -63,7 +63,7 @@ namespace ClassRepository
         /// <summary>
         /// Gets or sets the list UFOs
         /// </summary>
-        public List<UFO> UFOs { get; set; }
+        public List<Ufo> Ufos { get; set; }
 
         /// <summary>
         /// Gets or sets the list of Projectiles

@@ -147,8 +147,8 @@ namespace SpaceInvaderLogic.Test
         {
             // Mock
             Player player = new Player(10, 10);
-            Projectile collidesWith = new Projectile(10, 10, true, new UFO());
-            Projectile doesNotCollidesWith = new Projectile(1, 1, true, new UFO());
+            Projectile collidesWith = new Projectile(10, 10, true, new Ufo());
+            Projectile doesNotCollidesWith = new Projectile(1, 1, true, new Ufo());
             this.mockedGameModel = new Mock<GameModel>();
             this.mockedGameModel.Object.Player = player;
 
@@ -171,27 +171,27 @@ namespace SpaceInvaderLogic.Test
         public void WhenGameItemDies_ItIsRemovedFromTheModel()
         {
             // Mock
-            Projectile projectile = new Projectile(10, 10, true, new UFO());
+            Projectile projectile = new Projectile(10, 10, true, new Ufo());
             projectile.HitPoint = 0;
 
-            UFO ufo = new UFO();
+            Ufo ufo = new Ufo();
             ufo.HitPoint = 0;
 
             Shield shield = new Shield();
             shield.HitPoint = 0;
 
             List<Projectile> projectiles = new List<Projectile>();
-            List<UFO> ufos = new List<UFO>();
+            List<Ufo> ufos = new List<Ufo>();
             List<Shield> shields = new List<Shield>();
 
             this.mockedGameModel = new Mock<GameModel>();
 
             this.mockedGameModel.Object.Projectiles = projectiles;
-            this.mockedGameModel.Object.UFOs = ufos;
+            this.mockedGameModel.Object.Ufos = ufos;
             this.mockedGameModel.Object.Shields = shields;
 
             this.mockedGameModel.Object.Projectiles.Add(projectile);
-            this.mockedGameModel.Object.UFOs.Add(ufo);
+            this.mockedGameModel.Object.Ufos.Add(ufo);
             this.mockedGameModel.Object.Shields.Add(shield);
 
             GameLogic logic = new GameLogic();
@@ -201,8 +201,6 @@ namespace SpaceInvaderLogic.Test
             Assert.That(logic.Model.Projectiles.Count(), Is.EqualTo(1));
             logic.DeathCheck(projectile, typeof(Projectile));
             Assert.That(logic.Model.Projectiles.Count(), Is.EqualTo(0));
-
         }
-
     }
 }

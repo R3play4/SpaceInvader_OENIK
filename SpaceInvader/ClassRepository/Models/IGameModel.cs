@@ -14,7 +14,7 @@ namespace ClassRepository.Model
         /// <summary>
         /// Gets or sets the list UFOs
         /// </summary>
-        List<UFO> UFOs { get; set; }
+        List<Ufo> Ufos { get; set; }
 
         /// <summary>
         /// Gets or sets the list of Projectiles

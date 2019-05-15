@@ -62,7 +62,7 @@ namespace Display.GameDisplay
             //ImageBrush ufo_2 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_2, UriKind.Relative)));
             //ImageBrush ufo_3 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_3, UriKind.Relative)));
 
-            foreach (var ufo in gameModel.UFOs)
+            foreach (var ufo in gameModel.Ufos)
             {
                 RectangleGeometry actualGeometry = (RectangleGeometry)ufo.Shape();
                 context.DrawRectangle(GetUfoImg(ufo.Points), null, actualGeometry.Rect);

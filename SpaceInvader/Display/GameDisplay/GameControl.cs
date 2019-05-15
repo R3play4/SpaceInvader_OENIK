@@ -109,13 +109,13 @@ namespace Display.GameDisplay
                     if (this.gameLogic.Model.Projectiles.Count > i &&
                         this.gameLogic.Model.Projectiles[i].SourceObject.GetType() == typeof(Player))
                     {
-                        for (int k = this.gameLogic.Model.UFOs.Count - 1; k >= 0; k--)
+                        for (int k = this.gameLogic.Model.Ufos.Count - 1; k >= 0; k--)
                         {
                             if (this.gameLogic.Model.Projectiles.Count > i &&
-                                this.gameLogic.CollisionCheck(this.gameLogic.Model.Projectiles[i], this.gameLogic.Model.UFOs[k]))
+                                this.gameLogic.CollisionCheck(this.gameLogic.Model.Projectiles[i], this.gameLogic.Model.Ufos[k]))
                             {
-                                this.gameLogic.HandleCollision(this.gameLogic.Model.Projectiles[i], this.gameLogic.Model.UFOs[k]);
-                                this.gameLogic.DeathCheck(this.gameLogic.Model.UFOs[k], typeof(UFO));
+                                this.gameLogic.HandleCollision(this.gameLogic.Model.Projectiles[i], this.gameLogic.Model.Ufos[k]);
+                                this.gameLogic.DeathCheck(this.gameLogic.Model.Ufos[k], typeof(Ufo));
                             }
                         }
                     }

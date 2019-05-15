@@ -11,24 +11,24 @@ namespace ClassRepository
     /// <summary>
     /// UFO game item.
     /// </summary>
-    public class UFO : GameItem
+    public class Ufo : GameItem
     {
         private int sidewaysMoveCount = 15;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UFO"/> class.
+        /// Initializes a new instance of the <see cref="Ufo"/> class.
         /// </summary>
-        public UFO()
+        public Ufo()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UFO"/> class.
+        /// Initializes a new instance of the <see cref="Ufo"/> class.
         /// </summary>
         /// <param name="x">x coordinate</param>
         /// <param name="y">y coordinate</param>
         /// <param name="points">points that ufo worth</param>
-        public UFO(int x, int y, int points)
+        public Ufo(int x, int y, int points)
             : base(x, y)
         {
             this.HitPoint = 1;

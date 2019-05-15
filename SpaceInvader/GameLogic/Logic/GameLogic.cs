@@ -90,7 +90,7 @@ namespace SpaceInvaderLogic
             gameItem.TakeDamage();
             if (projectile.SourceObject.GetType() == typeof(Player) && gameItem.GetType() != typeof(Shield))
             {
-                this.Model.Score += ((UFO)gameItem).Points;
+                this.Model.Score += ((Ufo)gameItem).Points;
             }
 
             this.DeathCheck(projectile, typeof(Projectile));
@@ -109,9 +109,9 @@ namespace SpaceInvaderLogic
                 {
                     this.Model.Projectiles.Remove((Projectile)item);
                 }
-                else if (type == typeof(UFO))
+                else if (type == typeof(Ufo))
                 {
-                    this.Model.UFOs.Remove((UFO)item);
+                    this.Model.Ufos.Remove((Ufo)item);
                 }
                 else if (type == typeof(Shield))
                 {
@@ -169,7 +169,7 @@ namespace SpaceInvaderLogic
         {
             if (this.r.Next(1, 4) % 3 == 0)
             {
-                this.Model.Projectiles.Add(this.Model.UFOs[this.r.Next() % this.Model.UFOs.Count].Shoot());
+                this.Model.Projectiles.Add(this.Model.Ufos[this.r.Next() % this.Model.Ufos.Count].Shoot());
             }
         }
 
@@ -195,10 +195,10 @@ namespace SpaceInvaderLogic
         /// <returns>true if there are no more ufos</returns>
         public bool CheckIfLevelCleared()
         {
-            if (this.Model.UFOs.Count == 0)
+            if (this.Model.Ufos.Count == 0)
             {
                 GameModel tempModel = this.repository.LoadGameState(@"default.xml");
-                this.Model.UFOs = tempModel.UFOs;
+                this.Model.Ufos = tempModel.Ufos;
                 this.Model.Projectiles = new List<Projectile>();
                 this.UfoTimerTick *= 0.8;
                 if (this.Model.Player.HitPoint < 6)
@@ -226,7 +226,7 @@ namespace SpaceInvaderLogic
         /// </summary>
         public void UfoMove()
         {
-            foreach (UFO ufo in this.Model.UFOs)
+            foreach (Ufo ufo in this.Model.Ufos)
             {
                 ufo.Move();
             }
@@ -245,24 +245,24 @@ namespace SpaceInvaderLogic
                     // 50% chance of moving left or right.
                     if (this.r.Next(1, 100) > 50)
                     {
-                        UFO sideMovingUFO = new UFO(20, 25, 100);
+                        Ufo sideMovingUFO = new Ufo(20, 25, 100);
                         this.ufoMovingRight = true;
-                        this.Model.UFOs.Add(sideMovingUFO);
+                        this.Model.Ufos.Add(sideMovingUFO);
                     }
                     else
                     {
-                        UFO sideMovingUFO = new UFO((int)(Settings.WindowWidth - 20), 25, 100);
+                        Ufo sideMovingUFO = new Ufo((int)(Settings.WindowWidth - 20), 25, 100);
                         this.ufoMovingRight = false;
-                        this.Model.UFOs.Add(sideMovingUFO);
+                        this.Model.Ufos.Add(sideMovingUFO);
                     }
                 }
             }
             else
             {
                 // There is already a moving UFO. Loops through all the UFO's and moves the one with 100 points sideways.
-                for (int i = 0; i < this.Model.UFOs.Count(); i++)
+                for (int i = 0; i < this.Model.Ufos.Count(); i++)
                 {
-                    UFO actualUFO = this.Model.UFOs[i];
+                    Ufo actualUFO = this.Model.Ufos[i];
 
                     if (actualUFO.Points == 100 && this.ufoMovingRight == true)
                     {
@@ -275,7 +275,7 @@ namespace SpaceInvaderLogic
 
                     if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)
                     {
-                        this.Model.UFOs.Remove(actualUFO);
+                        this.Model.Ufos.Remove(actualUFO);
                     }
                 }
             }
@@ -289,13 +289,13 @@ namespace SpaceInvaderLogic
         {
             int i = 0;
 
-            while (i < this.Model.UFOs.Count() && this.Model.UFOs[i].Points != 100)
+            while (i < this.Model.Ufos.Count() && this.Model.Ufos[i].Points != 100)
             {
                 i++;
             }
 
             // true if displayed
-            return i < this.Model.UFOs.Count();
+            return i < this.Model.Ufos.Count();
         }
 
         /// <summary>
