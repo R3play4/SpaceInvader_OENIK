@@ -1,392 +1,392 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <UFOs>
-    <UFO>
+  <Ufos>
+    <Ufo>
       <Y>50</Y>
       <X>20</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>45</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>70</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>95</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>120</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>145</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>170</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>195</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>220</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>245</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>50</Y>
       <X>270</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>40</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>20</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>45</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>70</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>95</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>120</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>145</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>170</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>195</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>220</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>245</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>75</Y>
       <X>270</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>20</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>45</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>70</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>95</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>120</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>145</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>170</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>195</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>220</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>245</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>100</Y>
       <X>270</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>20</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>20</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>45</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>70</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>95</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>120</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>145</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>170</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>195</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>220</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>245</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>125</Y>
       <X>270</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>20</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>45</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>70</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>95</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>120</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>145</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>170</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>195</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>220</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>245</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-    <UFO>
+    </Ufo>
+    <Ufo>
       <Y>150</Y>
       <X>270</X>
       <R>0</R>
       <HitPoint>1</HitPoint>
       <Points>10</Points>
-    </UFO>
-  </UFOs>
+    </Ufo>
+  </Ufos>
   <Shields>
     <Shield>
       <Y>400</Y>
