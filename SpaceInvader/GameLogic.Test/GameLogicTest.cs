@@ -15,11 +15,17 @@ namespace GameLogic.Test
     using Moq;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Unit Testing for GameLogic using mocked GameModel.
+    /// </summary>
     [TestFixture]
     public class GameLogicTest
     {
         private Mock<GameModel> mockedGameModel;
 
+        /// <summary>
+        /// If Model.Player.HitPoint reaches zero the GameState changes to Finnished.
+        /// </summary>
         [Test]
         public void IfGameFinnished_ReturnsTrue()
         {
@@ -36,12 +42,15 @@ namespace GameLogic.Test
             Assert.That(gameFinnished, Is.EqualTo(true));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void IfGameIsNotFinnished_ReturnsFalse()
         {
             // Mocking and Setup
             this.mockedGameModel = new Mock<GameModel>();
-            this.mockedGameModel.Object.GameState = GameState.Running;
+            this.mockedGameModel.Object.Player.HitPoint = 2;
             GameLogic logic = new GameLogic();
             logic.Model = this.mockedGameModel.Object;
 
