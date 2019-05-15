@@ -9,6 +9,7 @@ namespace GameLogic.Test
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Media;
     using ClassRepository;
     using ClassRepository.Model;
     using Moq;
@@ -24,11 +25,12 @@ namespace GameLogic.Test
         {
             // Mocking and Setup
             this.mockedGameModel = new Mock<GameModel>();
-            this.mockedGameModel.Object.GameState = GameState.Finished;
-            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+            this.mockedGameModel.Object.Player.HitPoint = 0;
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
 
             // Act
-            bool gameFinnished = logic.GameEnd();
+            bool gameFinnished = logic.CheckGameEnd();
 
             // Assert
             Assert.That(gameFinnished, Is.EqualTo(true));
@@ -40,10 +42,11 @@ namespace GameLogic.Test
             // Mocking and Setup
             this.mockedGameModel = new Mock<GameModel>();
             this.mockedGameModel.Object.GameState = GameState.Running;
-            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
 
             // Act
-            bool gameFinnshed = logic.GameEnd();
+            bool gameFinnshed = logic.CheckGameEnd();
 
             // Assert
             Assert.That(gameFinnshed, Is.EqualTo(false));
@@ -55,7 +58,8 @@ namespace GameLogic.Test
             // Mocking and Setup
             this.mockedGameModel = new Mock<GameModel>();
             this.mockedGameModel.Object.GameState = GameState.Running;
-            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
 
             // Act
             logic.GameStateSwitch(newState);
@@ -74,7 +78,8 @@ namespace GameLogic.Test
             this.mockedGameModel.Object.Projectiles = new List<Projectile>();
             this.mockedGameModel.Object.Player = player;
 
-            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
 
             int numberOfProjectiles = this.mockedGameModel.Object.Projectiles.Count();
 
@@ -87,26 +92,31 @@ namespace GameLogic.Test
             // Gets the latest projectile
             Projectile lastProjectile = this.mockedGameModel.Object.Projectiles[this.mockedGameModel.Object.Projectiles.Count() - 1];
 
-            Assert.That(lastProjectile.X, Is.EqualTo(this.mockedGameModel.Object.Player.X));
+            // Gets the Width of the Ship so the X position of the new projectile can be calculated properly
+            RectangleGeometry shipBody = (RectangleGeometry)this.mockedGameModel.Object.Player.Shape();
+            double shipSize = shipBody.Rect.Width;
+
+            Assert.That(lastProjectile.X, Is.EqualTo(this.mockedGameModel.Object.Player.X + (shipSize / 2)));
             Assert.That(lastProjectile.Y, Is.EqualTo(this.mockedGameModel.Object.Player.Y));
         }
 
-        [TestCase(1)]
-        public void IfPlayerMoves_MovesToRightDirection(double isMovingRight)
+        [TestCase(true)]
+        public void IfPlayerMoves_MovesToRightDirection(bool isMovingRight)
         {
             // Mocking and Setup
             Player player = new Player(10, 10);
             this.mockedGameModel = new Mock<GameModel>();
             this.mockedGameModel.Object.Player = player;
+            double originalPosition = this.mockedGameModel.Object.Player.X; // this will be checked in the assert section
 
-            GameLogic logic = new GameLogic(this.mockedGameModel.Object);
+            GameLogic logic = new GameLogic();
+            logic.Model = this.mockedGameModel.Object;
 
             // Act
             logic.PlayerMove(isMovingRight);
 
             // Assert
-            Assert.That(this.mockedGameModel.Object.Player.X, Is.EqualTo(11));
-            Assert.That(this.mockedGameModel.Object.Player.Y, Is.EqualTo(10));
+            Assert.That(this.mockedGameModel.Object.Player.X, Is.EqualTo(originalPosition + 3));
         }
     }
 }
