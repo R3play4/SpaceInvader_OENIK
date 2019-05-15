@@ -200,7 +200,7 @@ namespace SpaceInvaderLogic
         {
             if (this.Model.Ufos.Count == 0)
             {
-                GameModel tempModel = this.repository.LoadGameState("..\\..\\DefaultGameState\\default_test.xml");
+                GameModel tempModel = this.repository.LoadGameState("..\\..\\DefaultGameState\\default.xml");
                 this.Model.Ufos = tempModel.Ufos;
                 this.Model.Projectiles = new List<Projectile>();
                 this.UfoTimerTick *= 0.8;
@@ -273,7 +273,7 @@ namespace SpaceInvaderLogic
                     }
                     else if (actualUFO.Points == 100 && this.ufoMovingRight == false)
                     {
-                        actualUFO.MoveSideWays(Settings.UfoSideStepSize * -1);
+                        actualUFO.MoveSideWays(-Settings.UfoSideStepSize);
                     }
 
                     if (actualUFO.X < 0 || actualUFO.X > Settings.WindowWidth)

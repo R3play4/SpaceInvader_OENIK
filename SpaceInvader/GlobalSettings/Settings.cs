@@ -70,8 +70,8 @@ namespace GlobalSettings
         public static ImageBrush GameOverBrush = new ImageBrush(new BitmapImage(new Uri(Settings.GameOverBackground, UriKind.Relative)));
 
         // New Game State
-        //public static string GameStateXML = "..\\..\\DefaultGameState\\default.xml";
-        public static string GameStateXML = "..\\..\\DefaultGameState\\default_test.xml";
+        public static string GameStateXML = "..\\..\\DefaultGameState\\default.xml";
+        //public static string GameStateXML = "..\\..\\DefaultGameState\\default_test.xml";
 
     }
 }
