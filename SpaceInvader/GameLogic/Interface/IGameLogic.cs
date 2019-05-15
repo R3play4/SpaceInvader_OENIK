@@ -19,6 +19,7 @@ namespace GameLogic.Interface
     public interface IGameLogic
     {
         IGameModel Model { get; }
+
         /// <summary>
         /// Handles player movement.
         /// </summary>

@@ -22,7 +22,7 @@ namespace GameLogic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        public IGameModel Model { get; private set; }
+        public IGameModel Model { get; set; }
 
         private IGameRepository repository;
 
