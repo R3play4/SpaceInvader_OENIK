@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['nunit_203_2e11_20_2d_20october_2011_2c_202018',['NUnit 3.11 - October 11, 2018',['../md__c_1__prog4__space_invader_packages__n_unit_83_811_80__c_h_a_n_g_e_s.html',1,'']]]
+  ['deathcheck',['DeathCheck',['../class_space_invader_logic_1_1_game_logic.html#a931befb7ec359d78c8b97c3b984ebb91',1,'SpaceInvaderLogic::GameLogic']]],
+  ['display',['Display',['../namespace_display.html',1,'']]],
+  ['gamedisplay',['GameDisplay',['../namespace_display_1_1_game_display.html',1,'Display']]],
+  ['properties',['Properties',['../namespace_display_1_1_properties.html',1,'Display']]]
 ];

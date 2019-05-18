@@ -24,15 +24,24 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "SpaceInvader", "index.html", [
-    [ "Castle Core Changelog", "md__c_1__prog4__space_invader_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html", null ],
-    [ "NUnit 3.11 - October 11, 2018", "md__c_1__prog4__space_invader_packages__n_unit_83_811_80__c_h_a_n_g_e_s.html", null ],
+    [ "Castle Core Changelog", "md__c_1__prog4__i_i__space_invader_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html", null ],
+    [ "NUnit 3.11 - October 11, 2018", "md__c_1__prog4__i_i__space_invader_packages__n_unit_83_811_80__c_h_a_n_g_e_s.html", null ],
     [ "Packages", "namespaces.html", [
-      [ "Packages", "namespaces.html", "namespaces_dup" ]
+      [ "Packages", "namespaces.html", "namespaces_dup" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Properties", "functions_prop.html", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
@@ -42,7 +51,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_class1_8cs_source.html"
+"_app_8g_8cs_source.html",
+"namespace_class_repository_1_1_xml_handler.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

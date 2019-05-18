@@ -1,4 +1,0 @@
-var dir_24f21428e4ade37d8e418358d183077d =
-[
-    [ "SpaceInvader", "dir_4c696045b221864eb16236f47092087f.html", "dir_4c696045b221864eb16236f47092087f" ]
-];

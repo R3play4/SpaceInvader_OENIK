@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['class1',['Class1',['../class_game_logic_1_1_class1.html',1,'GameLogic.Class1'],['../class_game_logic_1_1_test_1_1_class1.html',1,'GameLogic.Test.Class1']]],
-  ['classrepository',['ClassRepository',['../namespace_class_repository.html',1,'']]],
-  ['castle_20core_20changelog',['Castle Core Changelog',['../md__c_1__prog4__space_invader_packages__castle_8_core_84_83_81__c_h_a_n_g_e_l_o_g.html',1,'']]]
+  ['addeventhandler',['AddEventHandler',['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#a73471f4a6d1ca4c4fceec9ad8610f0c8',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler)'],['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#a73471f4a6d1ca4c4fceec9ad8610f0c8',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler)']]],
+  ['app',['App',['../class_display_1_1_app.html',1,'Display']]]
 ];

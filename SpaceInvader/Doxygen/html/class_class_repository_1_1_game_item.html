@@ -87,54 +87,271 @@ $(document).ready(function(){initNavTree('class_class_repository_1_1_game_item.h
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_class_repository_1_1_game_item-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ClassRepository.GameItem Class Reference</div>  </div>
+<div class="title">ClassRepository.GameItem Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class is used in the <a class="el" href="class_class_repository_1_1_game_model.html" title="Represents the current state of the game at any momment. ">GameModel</a> to define a state of the game.  
+ <a href="class_class_repository_1_1_game_item.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ClassRepository.GameItem:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_class_repository_1_1_game_item.png" usemap="#ClassRepository.GameItem_map" alt=""/>
   <map id="ClassRepository.GameItem_map" name="ClassRepository.GameItem_map">
-<area href="class_class_repository_1_1_player.html" alt="ClassRepository.Player" shape="rect" coords="0,56,161,80"/>
-<area href="class_class_repository_1_1_projectile.html" alt="ClassRepository.Projectile" shape="rect" coords="171,56,332,80"/>
-<area href="class_class_repository_1_1_shield.html" alt="ClassRepository.Shield" shape="rect" coords="342,56,503,80"/>
-<area href="class_class_repository_1_1_u_f_o.html" alt="ClassRepository.UFO" shape="rect" coords="513,56,674,80"/>
+<area href="class_class_repository_1_1_player.html" title="Player game item " alt="ClassRepository.Player" shape="rect" coords="0,56,161,80"/>
+<area href="class_class_repository_1_1_projectile.html" title="Projectile GameItem " alt="ClassRepository.Projectile" shape="rect" coords="171,56,332,80"/>
+<area href="class_class_repository_1_1_shield.html" title="Shield object " alt="ClassRepository.Shield" shape="rect" coords="342,56,503,80"/>
+<area href="class_class_repository_1_1_ufo.html" title="UFO game item. " alt="ClassRepository.Ufo" shape="rect" coords="513,56,674,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4174bab3fc1bd3e714fbedb1e573e8f4"><td class="memItemLeft" align="right" valign="top"><a id="a4174bab3fc1bd3e714fbedb1e573e8f4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GameItem</b> (int y, int x)</td></tr>
-<tr class="separator:a4174bab3fc1bd3e714fbedb1e573e8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7e18952b8b356a8bf119b1bdae6e1c7"><td class="memItemLeft" align="right" valign="top"><a id="af7e18952b8b356a8bf119b1bdae6e1c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TakeDamage</b> ()</td></tr>
+<tr class="memitem:af7e18952b8b356a8bf119b1bdae6e1c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#af7e18952b8b356a8bf119b1bdae6e1c7">TakeDamage</a> ()</td></tr>
+<tr class="memdesc:af7e18952b8b356a8bf119b1bdae6e1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reduces the HitPoint property.  <a href="#af7e18952b8b356a8bf119b1bdae6e1c7">More...</a><br /></td></tr>
 <tr class="separator:af7e18952b8b356a8bf119b1bdae6e1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a285a46e534aac87322eaf5c218bb4"><td class="memItemLeft" align="right" valign="top">abstract Geometry&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#ae9a285a46e534aac87322eaf5c218bb4">Shape</a> ()</td></tr>
+<tr class="memdesc:ae9a285a46e534aac87322eaf5c218bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shape of the item.  <a href="#ae9a285a46e534aac87322eaf5c218bb4">More...</a><br /></td></tr>
+<tr class="separator:ae9a285a46e534aac87322eaf5c218bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a606e3bce9ed02c32343a5fd781e8987e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#a606e3bce9ed02c32343a5fd781e8987e">GameItem</a> ()</td></tr>
+<tr class="memdesc:a606e3bce9ed02c32343a5fd781e8987e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_class_repository_1_1_game_item.html" title="This class is used in the GameModel to define a state of the game. ">GameItem</a> class.  <a href="#a606e3bce9ed02c32343a5fd781e8987e">More...</a><br /></td></tr>
+<tr class="separator:a606e3bce9ed02c32343a5fd781e8987e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f1161e9d266d71062e13a693a9c6f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#aa4f1161e9d266d71062e13a693a9c6f4">GameItem</a> (double x, double y)</td></tr>
+<tr class="memdesc:aa4f1161e9d266d71062e13a693a9c6f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_class_repository_1_1_game_item.html" title="This class is used in the GameModel to define a state of the game. ">GameItem</a> class.  <a href="#aa4f1161e9d266d71062e13a693a9c6f4">More...</a><br /></td></tr>
+<tr class="separator:aa4f1161e9d266d71062e13a693a9c6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ad4ca22e0d4ae576114b9fa44ad46a848"><td class="memItemLeft" align="right" valign="top"><a id="ad4ca22e0d4ae576114b9fa44ad46a848"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>y</b><code> [get, set]</code></td></tr>
-<tr class="separator:ad4ca22e0d4ae576114b9fa44ad46a848"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac175c31ee6bc5986fdd971103a718a72"><td class="memItemLeft" align="right" valign="top"><a id="ac175c31ee6bc5986fdd971103a718a72"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>x</b><code> [get, set]</code></td></tr>
-<tr class="separator:ac175c31ee6bc5986fdd971103a718a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac68f5d837e3c451e64801b6c1f3355b7"><td class="memItemLeft" align="right" valign="top"><a id="ac68f5d837e3c451e64801b6c1f3355b7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>r</b><code> [get, set]</code></td></tr>
-<tr class="separator:ac68f5d837e3c451e64801b6c1f3355b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44b52ee6a9114d869fb7ff87f36eb23"><td class="memItemLeft" align="right" valign="top"><a id="ac44b52ee6a9114d869fb7ff87f36eb23"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>HitPoint</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a0f3b808f5e1915d8ab55cfe142a628b9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#a0f3b808f5e1915d8ab55cfe142a628b9">Y</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0f3b808f5e1915d8ab55cfe142a628b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets Y coordinate  <a href="#a0f3b808f5e1915d8ab55cfe142a628b9">More...</a><br /></td></tr>
+<tr class="separator:a0f3b808f5e1915d8ab55cfe142a628b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2789e49375bf3dd55a7c304645423db4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#a2789e49375bf3dd55a7c304645423db4">X</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2789e49375bf3dd55a7c304645423db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets X coordinate  <a href="#a2789e49375bf3dd55a7c304645423db4">More...</a><br /></td></tr>
+<tr class="separator:a2789e49375bf3dd55a7c304645423db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44b52ee6a9114d869fb7ff87f36eb23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_class_repository_1_1_game_item.html#ac44b52ee6a9114d869fb7ff87f36eb23">HitPoint</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac44b52ee6a9114d869fb7ff87f36eb23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the number of times an Item was hit by a projectile.  <a href="#ac44b52ee6a9114d869fb7ff87f36eb23">More...</a><br /></td></tr>
 <tr class="separator:ac44b52ee6a9114d869fb7ff87f36eb23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00009">9</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Prog4/SpaceInvader/ClassRepository/BaseObjects/<a class="el" href="_game_item_8cs_source.html">GameItem.cs</a></li>
+<div class="textblock"><p>This class is used in the <a class="el" href="class_class_repository_1_1_game_model.html" title="Represents the current state of the game at any momment. ">GameModel</a> to define a state of the game. </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00012">12</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a606e3bce9ed02c32343a5fd781e8987e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606e3bce9ed02c32343a5fd781e8987e">&#9670;&nbsp;</a></span>GameItem() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClassRepository.GameItem.GameItem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="class_class_repository_1_1_game_item.html" title="This class is used in the GameModel to define a state of the game. ">GameItem</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00017">17</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa4f1161e9d266d71062e13a693a9c6f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4f1161e9d266d71062e13a693a9c6f4">&#9670;&nbsp;</a></span>GameItem() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClassRepository.GameItem.GameItem </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="class_class_repository_1_1_game_item.html" title="This class is used in the GameModel to define a state of the game. ">GameItem</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>x coordinate</td></tr>
+    <tr><td class="paramname">y</td><td>y coordinate</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00026">26</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae9a285a46e534aac87322eaf5c218bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a285a46e534aac87322eaf5c218bb4">&#9670;&nbsp;</a></span>Shape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract Geometry ClassRepository.GameItem.Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the shape of the item. </p>
+<dl class="section return"><dt>Returns</dt><dd>Geometry of the item</dd></dl>
+
+<p>Implemented in <a class="el" href="class_class_repository_1_1_ufo.html#a134a2b537f6305e84d5a5a3905c410d8">ClassRepository.Ufo</a>, <a class="el" href="class_class_repository_1_1_projectile.html#abaca7e60f2e368b8b038d7a8e273d38b">ClassRepository.Projectile</a>, <a class="el" href="class_class_repository_1_1_player.html#aa0fe761d1153f6901bd96aa7d0f59d3c">ClassRepository.Player</a>, and <a class="el" href="class_class_repository_1_1_shield.html#a472b5a924ab55987c02a7933e00a3720">ClassRepository.Shield</a>.</p>
+
+</div>
+</div>
+<a id="af7e18952b8b356a8bf119b1bdae6e1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e18952b8b356a8bf119b1bdae6e1c7">&#9670;&nbsp;</a></span>TakeDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassRepository.GameItem.TakeDamage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reduces the HitPoint property. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="ac44b52ee6a9114d869fb7ff87f36eb23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac44b52ee6a9114d869fb7ff87f36eb23">&#9670;&nbsp;</a></span>HitPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ClassRepository.GameItem.HitPoint</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the number of times an Item was hit by a projectile. </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00045">45</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2789e49375bf3dd55a7c304645423db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2789e49375bf3dd55a7c304645423db4">&#9670;&nbsp;</a></span>X</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ClassRepository.GameItem.X</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets X coordinate </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00040">40</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+
+</div>
+</div>
+<a id="a0f3b808f5e1915d8ab55cfe142a628b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f3b808f5e1915d8ab55cfe142a628b9">&#9670;&nbsp;</a></span>Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ClassRepository.GameItem.Y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets Y coordinate </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_item_8cs_source.html#l00035">35</a> of file <a class="el" href="_game_item_8cs_source.html">GameItem.cs</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>C:/Prog4 II/SpaceInvader/ClassRepository/Models/<a class="el" href="_game_item_8cs_source.html">GameItem.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
