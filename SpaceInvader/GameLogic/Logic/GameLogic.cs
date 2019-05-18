@@ -231,7 +231,10 @@ namespace SpaceInvaderLogic
         {
             foreach (Ufo ufo in this.Model.Ufos)
             {
-                ufo.Move();
+                if (ufo.Points != 100)
+                {
+                    ufo.Move();
+                }
             }
         }
 

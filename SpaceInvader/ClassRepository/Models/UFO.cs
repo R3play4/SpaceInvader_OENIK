@@ -1,4 +1,4 @@
-﻿// <copyright file="UFO.cs" company="PlaceholderCompany">
+﻿// <copyright file="Ufo.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

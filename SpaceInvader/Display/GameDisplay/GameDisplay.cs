@@ -12,11 +12,11 @@ using ClassRepository.Model;
 
 namespace Display.GameDisplay
 {
-    public class GameDisplay
+    public class SpaceInvaderDisplay
     {
         IGameModel gameModel;
 
-        public GameDisplay(IGameModel gameModel)
+        public SpaceInvaderDisplay(IGameModel gameModel)
         {
             this.gameModel = gameModel;
         }
@@ -107,7 +107,8 @@ namespace Display.GameDisplay
                 FlowDirection.LeftToRight,
                 new Typeface("Comic-Sans"),
                 15,
-                Brushes.White);
+                Brushes.White,
+                VisualTreeHelper.GetDpi(new GameControl()).PixelsPerDip);
 
             dg.Children.Add(new GeometryDrawing(null, new Pen(Brushes.White, 1), text.BuildGeometry(new Point(10, 5))));
 

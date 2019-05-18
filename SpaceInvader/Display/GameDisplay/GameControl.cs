@@ -18,7 +18,7 @@ namespace Display.GameDisplay
     public class GameControl : FrameworkElement
     {
         SpaceInvaderLogic.GameLogic gameLogic;
-        GameDisplay gameDisplay;
+        SpaceInvaderDisplay gameDisplay;
         DispatcherTimer ufoTimer;
         DispatcherTimer sidewayUfoTimer;
         DispatcherTimer projectileTimer;
@@ -45,7 +45,7 @@ namespace Display.GameDisplay
             // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
             //gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
             gameLogic = ((MainMenuWindow)Application.Current.MainWindow).Logic;
-            gameDisplay = new GameDisplay(this.gameLogic.Model);
+            gameDisplay = new SpaceInvaderDisplay(this.gameLogic.Model);
             //((MainMenuWindow)Application.Current.MainWindow).Logic
             
 
@@ -183,7 +183,7 @@ namespace Display.GameDisplay
                 this.gameLogic.GameStateSwitch(GameState.Paused);
                 PauseWindow window = new PauseWindow(this.gameLogic);
                 window.ShowDialog();
-                this.gameDisplay = new GameDisplay(this.gameLogic.Model);
+                this.gameDisplay = new SpaceInvaderDisplay(this.gameLogic.Model);
                 this.isMovingRight = null;
                 this.gameLogic.GameStateSwitch(GameState.Running);
                 InvalidateVisual();
