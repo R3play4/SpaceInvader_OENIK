@@ -71,7 +71,6 @@ namespace GlobalSettings
 
         // New Game State
         public static string GameStateXML = "..\\..\\DefaultGameState\\default.xml";
-        //public static string GameStateXML = "..\\..\\DefaultGameState\\default_test.xml";
 
     }
 }

@@ -245,7 +245,7 @@ namespace SpaceInvaderLogic
         {
             if (!this.IsSideMovingUfoDisplayed())
             {
-                // 20% chance that a sidemoving UFO will appear
+                // 10% chance that a sidemoving UFO will appear
                 if (this.r.Next(1, 100) > 90)
                 {
                     // 50% chance of moving left or right.

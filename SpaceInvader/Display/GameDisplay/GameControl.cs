@@ -25,29 +25,16 @@ namespace Display.GameDisplay
         bool? isMovingRight;
         bool canShoot;
 
-        //MainMenuWindow mainMenuWindow = new MainMenuWindow();
-        //MainWindow window = new MainWindow();
-
-        //public string MyProperty { get; set; }
         public GameControl()
         {
-            //this.gameLogic = logic;
-            //this.GameControl_Loaded();
             Loaded += GameControl_Loaded;
         }
 
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
-        //private void GameControl_Loaded()
         {
-            //mainMenuWindow.ShowDialog();
 
-            //gameRepo = new GameRepository();
-            // Display\bin\debug -> kell egy relative path a DefaultGameState Mappára. Vagy maradhat így.
-            //gameModel = this.gameRepo.LoadGameState(GlobalSettings.Settings.GameStateXML);
             gameLogic = ((MainMenuWindow)Application.Current.MainWindow).Logic;
             gameDisplay = new SpaceInvaderDisplay(this.gameLogic.Model);
-            //((MainMenuWindow)Application.Current.MainWindow).Logic
-            
 
             Window win = Window.GetWindow(this);
             InvalidateVisual();

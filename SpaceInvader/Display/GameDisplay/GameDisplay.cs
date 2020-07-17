@@ -23,17 +23,8 @@ namespace Display.GameDisplay
 
         private void DrawSpacship(DrawingContext context)
         {
-            /*
-            double halfWidth = Settings.ShipSize / 2;
-            double halfHeight = Settings.ShipSize / 2;
-            */
             ImageBrush spaceshipBg = new ImageBrush(new BitmapImage(new Uri(Settings.SpaceShipBackground, UriKind.Relative)));
             RectangleGeometry playerRectGeometry = (RectangleGeometry)gameModel.Player.Shape();
-            //Rect half = playerRectGeometry.Rect;
-            //half.X = gameModel.Player.X - (Settings.ShipSize/2);
-            //half.Y = gameModel.Player.Y - (Settings.ShipSize / 2);
-            //half.Width = 50;
-            //half.Height = 50;
             context.DrawRectangle(spaceshipBg, null, playerRectGeometry.Rect);
         }
 
@@ -58,9 +49,6 @@ namespace Display.GameDisplay
 
         private void DrawUFO(DrawingContext context)
         {
-            //ImageBrush ufo_1 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_1, UriKind.Relative)));
-            //ImageBrush ufo_2 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_2, UriKind.Relative)));
-            //ImageBrush ufo_3 = new ImageBrush(new BitmapImage(new Uri(Settings.UFO_3, UriKind.Relative)));
 
             foreach (var ufo in gameModel.Ufos)
             {
@@ -87,8 +75,6 @@ namespace Display.GameDisplay
         public void Display(DrawingContext context)
         {
             DrawingGroup dg = new DrawingGroup();
-            //context.DrawRectangle(Config.BackgroundColor, new Pen(Config.FrameColor, Config.FrameSize), new Rect(0, 0, Config.WindowWidth - Config.FrameSize * 4, Config.WindowHeight - Config.FrameSize * 4));
-            //new Pen(Config.FrameColor, Config.FrameSize)
 
             // Background
             dg.Children.Add(new GeometryDrawing(Settings.BackgroundColor, new Pen(Settings.FrameColor, Settings.FrameSize),
