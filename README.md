@@ -1,6 +1,6 @@
 # SpaceInvader_OENIK
 To Try: 
-Open the SLN -> Set "Display" project as Start Up project
+Open the SLN with Visual Studio -> Set "Display" project as Start Up project
 
 University Team project.
 
